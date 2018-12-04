@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18B75" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ItemSets" representedClassName="ItemSets" syncable="YES" codeGenerationType="class">
+        <attribute name="champion" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="itens" optional="YES" attributeType="Transformable" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ItemSets" positionX="-63" positionY="-18" width="128" height="75"/>
+    </elements>
+</model>
