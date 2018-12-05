@@ -35,13 +35,20 @@ class ItemSetTableViewCell: UITableViewCell {
         
         self.itemSetName.text = itemSetCoreData.name
         
-        for itemIndex in 0..<itemSetCoreData.itemsId.count {
+        for index in 0..<self.items.count {
             
-            let itemThumbString = BaseURL.itemThumb.replacingOccurrences(of: "{{id}}", with: itemSetCoreData.itemsId[itemIndex])
-            
-            if let validItemURL = URL(string: itemThumbString) {
-                loadImage(with: validItemURL, options: NukeOptions.itemLoading, into: self.items[itemIndex])
+            if itemSetCoreData.itemsId.indices.contains(index) {
+                self.items[index].isHidden = false
+                
+                let itemThumbString = BaseURL.itemThumb.replacingOccurrences(of: "{{id}}", with: itemSetCoreData.itemsId[index])
+                
+                if let validItemURL = URL(string: itemThumbString) {
+                    loadImage(with: validItemURL, options: NukeOptions.itemLoading, into: self.items[index])
+                } 
+            } else {
+                self.items[index].isHidden = true
             }
         }
+
     }
 }

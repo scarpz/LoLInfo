@@ -797,7 +797,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="s6b-jz-v9v"/>
                     <connections>
-                        <outlet property="backgroundView" destination="5Bc-jb-xO5" id="JGH-DM-AGI"/>
+                        <outlet property="backgroundView" destination="5Bc-jb-xO5" id="EYq-Df-6GC"/>
                         <outlet property="searchTextField" destination="Xlk-h5-yYD" id="rWN-D9-jGH"/>
                         <outlet property="tableView" destination="bXk-6p-9EL" id="15D-v6-sGJ"/>
                         <segue destination="Wyi-2e-lIo" kind="show" identifier="ItemDetailSegue" id="HdV-Xk-8hW"/>
@@ -10434,7 +10434,7 @@ SgAIx1IACMdVAAjHZwAIx2oACMdvAAAAAAAABAEAAAAAAAAAbQAAAAAAAAAAAAAAAAAIx3E
         <image name="searchIcon" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UbQ-5W-FRi"/>
-        <segue reference="HdV-Xk-8hW"/>
+        <segue reference="e1v-yt-cru"/>
+        <segue reference="dsj-tE-vFE"/>
     </inferredMetricsTieBreakers>
 </document>

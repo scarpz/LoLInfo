@@ -158,7 +158,6 @@ extension SelectItemItemSetViewController: UITableViewDelegate, UITableViewDataS
         if let delegate = self.delegate {
             delegate.selectItem(item: self.items[indexPath.row])
         }
-        self.dismiss(animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {

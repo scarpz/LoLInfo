@@ -114,10 +114,9 @@ extension ItemSetListViewController: UITableViewDelegate, UITableViewDataSource 
         return UIView()
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        let dislikeAction = UIContextualAction(style: .normal, title: "Delete") { [unowned self] (action, view, completion) in
-            
+        if editingStyle == .delete {
             do {
                 try ItemSetServices.removeItemSet(itemSet: self.itemSetsCoreData[indexPath.row])
                 
@@ -131,10 +130,7 @@ extension ItemSetListViewController: UITableViewDelegate, UITableViewDataSource 
                 // TODO:
             }
         }
-        dislikeAction.backgroundColor = .red
-        return UISwipeActionsConfiguration(actions: [dislikeAction])
-    }
-    
+    }    
 }
 
 

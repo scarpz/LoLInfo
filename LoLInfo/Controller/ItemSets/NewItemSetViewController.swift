@@ -63,7 +63,7 @@ class NewItemSetViewController: UIViewController {
                 // TODO: -
             }
         } else {
-            self.createAlert(title: "Oops", message: "There is an error in this Item Set. Or you didn't select a Champion or you didn't pick 6 items. Please try again")
+            self.createAlert(title: "Oops", message: "There is an error in this Item Set. Or you didn't select a Champion or you didn't pick any item. Please try again")
         }
     }
     
