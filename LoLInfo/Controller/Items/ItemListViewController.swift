@@ -79,8 +79,10 @@ extension ItemListViewController {
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.keyboardDismissMode = .onDrag
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        self.collectionView.keyboardDismissMode = .onDrag
         
         self.search.searchResultsUpdater = self
         self.search.dimsBackgroundDuringPresentation = false

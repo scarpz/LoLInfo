@@ -63,6 +63,7 @@ extension ItemSetListViewController {
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.keyboardDismissMode = .onDrag
         
         // Set the search
         self.search.searchResultsUpdater = self

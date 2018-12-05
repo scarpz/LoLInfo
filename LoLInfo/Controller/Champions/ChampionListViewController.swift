@@ -56,6 +56,7 @@ extension ChampionListViewController {
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        self.collectionView.keyboardDismissMode = .onDrag
         
         // Set the search
         self.search.searchResultsUpdater = self
