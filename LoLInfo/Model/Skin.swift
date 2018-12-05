@@ -14,12 +14,8 @@ struct Skin {
     var id: Int
     var skinNumber: Int
     var name: String
-    var splashURL: String {
-        return "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/\(championStringId)_\(skinNumber).jpg"
-    }
-    var loadingUrl: String {
-        return "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/\(championStringId)_\(skinNumber).jpg"
-    }
+    var splashURL: String
+    var loadingURL: String
     
     init(championName: String, championStringId: String, dict: [String : Any]) {
         self.championStringId = championStringId
@@ -28,5 +24,9 @@ struct Skin {
         
         let nameString = (dict["name"] as? String) ?? ""
         self.name = nameString == "default" ? championName : nameString
+        
+        self.splashURL = BaseURL.championSplash.replacingOccurrences(of: "{{stringId}}", with: self.championStringId).replacingOccurrences(of: "{{skinNumber}}", with: "\(self.skinNumber)")
+        
+        self.loadingURL = BaseURL.championLoading.replacingOccurrences(of: "{{stringId}}", with: self.championStringId).replacingOccurrences(of: "{{skinNumber}}", with: "\(self.skinNumber)")
     }
 }

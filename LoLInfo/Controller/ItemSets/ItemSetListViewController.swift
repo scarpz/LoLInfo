@@ -19,9 +19,9 @@ class ItemSetListViewController: UIViewController {
     // Search Controller to filter ItemSets
     private let search = UISearchController(searchResultsController: nil)
     // Array of ItemSet to be as a backup when search isn't active
-    private var allItemSets = [ItemSet]()
+    private var allItemSetsCoreData = [ItemSetCoreData]()
     // Array of ItemSet to be used as data source for the tableView
-    private var itemSets = [ItemSet]()
+    private var itemSetsCoreData = [ItemSetCoreData]()
     
     
     // MARK: - Life Cycle
@@ -41,14 +41,6 @@ class ItemSetListViewController: UIViewController {
     // MARK: - Actions
     @IBAction func addNewItemSegue(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "AddItemSetSegue", sender: nil)
-    }
-
-
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "NewItemSetSegue" {
-            
-        }
     }
 }
 
@@ -78,15 +70,13 @@ extension ItemSetListViewController {
     /// Method responsible to load all the Item Sets, fill the data source and backup properties
     /// and reaload the Table View with the retrieved values
     private func getAllItemSets() {
-        ItemSetServices.getAllItemSets { [unowned self] itemSets in
-            if let validItemSets = itemSets {
-                self.allItemSets = validItemSets
-                self.itemSets = validItemSets
-
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
+        do {
+            self.allItemSetsCoreData = try ItemSetServices.getAllItemSets()
+            self.itemSetsCoreData = self.allItemSetsCoreData
+            
+            self.tableView.reloadData()
+        } catch {
+            // TODO: - 
         }
     }
 }
@@ -96,12 +86,12 @@ extension ItemSetListViewController {
 extension ItemSetListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.itemSets.count
+        return self.itemSetsCoreData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ItemSetTableViewCell") as? ItemSetTableViewCell {
-            cell.setup(itemSet: self.itemSets[indexPath.row])
+            cell.setup(itemSetCoreData: self.itemSetsCoreData[indexPath.row])
             return cell
         } else {
             return UITableViewCell()
@@ -124,6 +114,27 @@ extension ItemSetListViewController: UITableViewDelegate, UITableViewDataSource 
         return UIView()
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let dislikeAction = UIContextualAction(style: .normal, title: "Delete") { [unowned self] (action, view, completion) in
+            
+            do {
+                try ItemSetServices.removeItemSet(itemSet: self.itemSetsCoreData[indexPath.row])
+                
+                // Remove the Item Set Core Data from the datasource and backup list
+                self.itemSetsCoreData.remove(at: indexPath.row)
+                self.allItemSetsCoreData.remove(at: indexPath.row)
+                
+                // Remove beautifully the cell from the Table View
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            } catch {
+                // TODO:
+            }
+        }
+        dislikeAction.backgroundColor = .red
+        return UISwipeActionsConfiguration(actions: [dislikeAction])
+    }
+    
 }
 
 
@@ -137,13 +148,13 @@ extension ItemSetListViewController: UISearchResultsUpdating {
             
             // If it's not typed in the search, fill the datasourse with all the information
             if text.isEmpty {
-                self.itemSets = self.allItemSets
+                self.itemSetsCoreData = self.allItemSetsCoreData
             } else {
                 // Otherwise filter the Item Set name (also lowercased) with the text in the search bar
-                self.itemSets = self.allItemSets.filter({ $0.name.lowercased().contains(text) })
+                self.itemSetsCoreData = self.allItemSetsCoreData.filter({ $0.name.lowercased().contains(text) })
             }
         } else {
-            self.itemSets = self.allItemSets
+            self.itemSetsCoreData = self.allItemSetsCoreData
         }
         
         // Reloads the Table View

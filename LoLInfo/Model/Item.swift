@@ -15,9 +15,7 @@ struct Item {
     var shortDescription: String
     var description: String
     var price: Int
-    var thumbURL: String {
-        return "http://ddragon.leagueoflegends.com/cdn/\(Patch.patch)/img/item/\(id).png"
-    }
+    var thumbURL: String
     
     init(id: Int, dict: [String : Any]) {
         self.id = id
@@ -35,5 +33,7 @@ struct Item {
         
         let goldDict = dict["gold"] as? [String : Any] ?? [:]
         self.price = goldDict["total"] as? Int ?? 0
+        
+        self.thumbURL = BaseURL.itemThumb.replacingOccurrences(of: "{{id}}", with: "\(self.id)")
     }
 }

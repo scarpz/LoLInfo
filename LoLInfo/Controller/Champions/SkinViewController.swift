@@ -44,7 +44,7 @@ class SkinViewController: UIViewController {
         if sender.selectedSegmentIndex == 0 {
             self.display(skinURL: self.skin.splashURL)
         } else {
-            self.display(skinURL: self.skin.loadingUrl)
+            self.display(skinURL: self.skin.loadingURL)
         }
     }
     

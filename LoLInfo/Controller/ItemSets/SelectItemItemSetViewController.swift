@@ -16,6 +16,8 @@ class SelectItemItemSetViewController: UIViewController {
     
     
     // MARK: - Outlets
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -94,6 +96,10 @@ extension SelectItemItemSetViewController {
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        self.searchTextField.delegate = self
+        
+        self.backgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.dismissAction)))
     }
     
     /// Method responsible to load all the Items, fill the data source and backup properties
@@ -109,6 +115,25 @@ extension SelectItemItemSetViewController {
                 }
             }
         }
+    }
+    
+    @objc private func dismissAction() {
+        
+        if searchTextField.isFirstResponder {
+            self.searchTextField.resignFirstResponder()
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+}
+
+
+// MARK: - Text Field Methods
+extension SelectItemItemSetViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

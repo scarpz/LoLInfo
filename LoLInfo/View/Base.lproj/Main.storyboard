@@ -80,7 +80,7 @@
         <scene sceneID="rMe-db-Rcl">
             <objects>
                 <navigationController title="Item Sets" automaticallyAdjustsScrollViewInsets="NO" id="XQt-oF-M97" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item Sets" id="lk0-TS-UaW"/>
+                    <tabBarItem key="tabBarItem" title="Item Sets" image="itemSetIcon" id="lk0-TS-UaW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="aYs-n1-O2z">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
@@ -119,5 +119,6 @@
     <resources>
         <image name="championsIcon" width="50" height="50"/>
         <image name="itemIcon" width="50" height="50"/>
+        <image name="itemSetIcon" width="50" height="50"/>
     </resources>
 </document>

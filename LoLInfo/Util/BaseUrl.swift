@@ -17,4 +17,10 @@ struct BaseURL {
     static let championList = "http://ddragon.leagueoflegends.com/cdn/\(Patch.patch)/data/en_US/champion.json"
     static let championDetail = "http://ddragon.leagueoflegends.com/cdn/\(Patch.patch)/data/en_US/champion/{{stringId}}.json"
     static let itemList = "http://ddragon.leagueoflegends.com/cdn/\(Patch.patch)/data/en_US/item.json"
+    static let championThumb = "http://ddragon.leagueoflegends.com/cdn/\(Patch.patch)/img/champion/{{stringId}}.png"
+    static let itemThumb = "http://ddragon.leagueoflegends.com/cdn/\(Patch.patch)/img/item/{{id}}.png"
+    static let championSplash = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/{{stringId}}_{{skinNumber}}.jpg"
+    static let championLoading = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{stringId}}_{{skinNumber}}.jpg"
+    static let passiveThumb = "http://ddragon.leagueoflegends.com/cdn/\(Patch.patch)/img/passive/{{stringId}}.png"
+    static let skillThumb = "http://ddragon.leagueoflegends.com/cdn/\(Patch.patch)/img/spell/{{stringId}}.png"
 }

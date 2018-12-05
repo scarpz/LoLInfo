@@ -53,6 +53,9 @@
 		18EAE30421ACFB1B00CA696F /* SkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EAE30321ACFB1B00CA696F /* SkillsViewController.swift */; };
 		18EFAB6721A5D1C200C32067 /* NukeOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EFAB6621A5D1C200C32067 /* NukeOptions.swift */; };
 		18EFAB6921A5D34E00C32067 /* ResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EFAB6821A5D34E00C32067 /* ResponseParser.swift */; };
+		18FF17B221B83A41005546F5 /* ItemSetCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FF17B121B83A41005546F5 /* ItemSetCoreData.swift */; };
+		18FF17B421B83D9A005546F5 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FF17B321B83D9A005546F5 /* Errors.swift */; };
+		18FF17B621B83E20005546F5 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FF17B521B83E20005546F5 /* ViewControllerExtension.swift */; };
 		8855923C356975390085417F /* Pods_LoLInfo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63962ED7208F84011DA07EC4 /* Pods_LoLInfo.framework */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +108,9 @@
 		18EAE30321ACFB1B00CA696F /* SkillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsViewController.swift; sourceTree = "<group>"; };
 		18EFAB6621A5D1C200C32067 /* NukeOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NukeOptions.swift; sourceTree = "<group>"; };
 		18EFAB6821A5D34E00C32067 /* ResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseParser.swift; sourceTree = "<group>"; };
+		18FF17B121B83A41005546F5 /* ItemSetCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSetCoreData.swift; sourceTree = "<group>"; };
+		18FF17B321B83D9A005546F5 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		18FF17B521B83E20005546F5 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		63962ED7208F84011DA07EC4 /* Pods_LoLInfo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoLInfo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6CFAB7C60A181C6FBD22066 /* Pods-LoLInfo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoLInfo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LoLInfo/Pods-LoLInfo.debug.xcconfig"; sourceTree = "<group>"; };
 		DA0991A8314A798FF9862F45 /* Pods-LoLInfo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoLInfo.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoLInfo/Pods-LoLInfo.release.xcconfig"; sourceTree = "<group>"; };
@@ -205,6 +211,7 @@
 				1837A78921A71EEA001F8ADA /* Skill.swift */,
 				180F8E0321A822AE0047C8F0 /* Item.swift */,
 				184CCBD421AF19E400BA27B0 /* ItemSet.swift */,
+				18FF17B121B83A41005546F5 /* ItemSetCoreData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,6 +293,8 @@
 				18EFAB6821A5D34E00C32067 /* ResponseParser.swift */,
 				189B63BD21AAFB7800A1603B /* ViewExtension.swift */,
 				186F23C121AD7E1200873EB1 /* StringExtension.swift */,
+				18FF17B321B83D9A005546F5 /* Errors.swift */,
+				18FF17B521B83E20005546F5 /* ViewControllerExtension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -423,9 +432,11 @@
 				1885064221A5BB3C00D77E0E /* LoLInfo.xcdatamodeld in Sources */,
 				189B63BE21AAFB7800A1603B /* ViewExtension.swift in Sources */,
 				18CB10F021B0F35900DB41EC /* ItemSelectionCollectionViewCell.swift in Sources */,
+				18FF17B621B83E20005546F5 /* ViewControllerExtension.swift in Sources */,
 				18CB10EC21B0E18300DB41EC /* ItemSetCollectionViewCell.swift in Sources */,
 				188F490E21ACDAFD00DA398F /* SkinViewController.swift in Sources */,
 				186F23C221AD7E1200873EB1 /* StringExtension.swift in Sources */,
+				18FF17B221B83A41005546F5 /* ItemSetCoreData.swift in Sources */,
 				18750C3621AE2423006AC014 /* ItemDetailViewController.swift in Sources */,
 				180F8E0421A822AE0047C8F0 /* Item.swift in Sources */,
 				18A31E3A21B023960085A32E /* ChampionSelectionTableViewCell.swift in Sources */,
@@ -447,6 +458,7 @@
 				184CCBD521AF19E400BA27B0 /* ItemSet.swift in Sources */,
 				1885066321A5C32B00D77E0E /* RequestMethod.swift in Sources */,
 				1885065A21A5BDCB00D77E0E /* Champion.swift in Sources */,
+				18FF17B421B83D9A005546F5 /* Errors.swift in Sources */,
 				1885066521A5C47700D77E0E /* BaseUrl.swift in Sources */,
 				1885065F21A5C26500D77E0E /* ChampionServices.swift in Sources */,
 				18EFAB6921A5D34E00C32067 /* ResponseParser.swift in Sources */,

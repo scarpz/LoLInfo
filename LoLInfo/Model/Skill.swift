@@ -22,13 +22,7 @@ struct Skill {
     var stringId: String
     var name: String
     var description: String
-    var thumbURL: String {
-        if type == .passive {
-            return "http://ddragon.leagueoflegends.com/cdn/\(Patch.patch)/img/passive/\(stringId).png"
-        } else {
-            return "http://ddragon.leagueoflegends.com/cdn/\(Patch.patch)/img/spell/\(stringId).png"
-        }
-    }
+    var thumbURL: String
     
     init(type: SkillType, dict: [String : Any]) {
         self.type = type
@@ -40,8 +34,10 @@ struct Skill {
             let imageDict = dict["image"] as? [String : Any] ?? [:]
             let imageSuffix =  imageDict["full"] as? String ?? ""
             self.stringId = imageSuffix.components(separatedBy: ".png").first ?? ""
+            self.thumbURL = BaseURL.passiveThumb.replacingOccurrences(of: "{{stringId}}", with: self.stringId)
         } else {
             self.stringId = dict["id"] as? String ?? ""
+            self.thumbURL = BaseURL.skillThumb.replacingOccurrences(of: "{{stringId}}", with: self.stringId)
         }
         self.name = dict["name"] as? String ?? ""
         self.description = dict["description"] as? String ?? ""

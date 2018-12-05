@@ -11,6 +11,7 @@ import Foundation
 struct ItemSet {
     
     var name: String
+    var date: Date
     var champion: Champion
     var items: [Item]
 }

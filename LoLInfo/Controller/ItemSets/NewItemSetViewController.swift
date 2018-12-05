@@ -49,26 +49,32 @@ class NewItemSetViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func saveItemSet(_ sender: UIBarButtonItem) {
+        
+        self.itemSetTextField.resignFirstResponder()
+        
         if let itemSetName = self.itemSetTextField.text, let champion = self.selectedChampion, self.selectedItems.count > 0 && self.selectedItems.count <= 6 {
             
-            let itemSet = ItemSet(name: itemSetName, champion: champion, items: self.selectedItems)
+            let itemSet = ItemSet(name: itemSetName, date: Date(), champion: champion, items: self.selectedItems)
             
-            ItemSetServices.saveItemSet(itemSet: itemSet)
-            self.navigationController?.popViewController(animated: true)
-            
+            do {
+                try ItemSetServices.saveItemSet(itemSet: itemSet)
+                self.navigationController?.popViewController(animated: true)
+            } catch let error {
+                // TODO: -
+            }
         } else {
-            let alert = UIAlertController(title: "Oops", message: "There is an error in this Item Set. Or you didnt select a Champion or you didn't pick 6 items. Please try again", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            self.createAlert(title: "Oops", message: "There is an error in this Item Set. Or you didn't select a Champion or you didn't pick 6 items. Please try again")
         }
     }
     
     
     @IBAction func championInfo(_ sender: UIButton) {
+        self.itemSetTextField.resignFirstResponder()
         self.performSegue(withIdentifier: "ChampionDetailSegue", sender: self.selectedChampion)
     }
 
     @IBAction func selectChampion(_ sender: UIButton) {
+        self.itemSetTextField.resignFirstResponder()
         self.performSegue(withIdentifier: "SelectChampionSegue", sender: nil)
     }
     
@@ -155,6 +161,8 @@ extension NewItemSetViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        self.itemSetTextField.resignFirstResponder()
         
         if indexPath.row != self.selectedItems.count {
             self.performSegue(withIdentifier: "ItemDetailSegue", sender: self.selectedItems[indexPath.row])

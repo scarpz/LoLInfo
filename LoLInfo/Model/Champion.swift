@@ -14,9 +14,7 @@ struct Champion {
     var stringId: String
     var name: String
     var title: String
-    var thumbURL: String {
-        return "http://ddragon.leagueoflegends.com/cdn/\(Patch.patch)/img/champion/\(stringId).png"
-    }
+    var thumbURL: String
     var championDetail: ChampionDetail?
     
     
@@ -25,5 +23,6 @@ struct Champion {
         self.stringId = (dict["id"] as? String) ?? ""
         self.name = (dict["name"] as? String) ?? ""
         self.title = (dict["title"] as? String) ?? ""
+        self.thumbURL = BaseURL.championThumb.replacingOccurrences(of: "{{stringId}}", with: self.stringId)
     }
 }

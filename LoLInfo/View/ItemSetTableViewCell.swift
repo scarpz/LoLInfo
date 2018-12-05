@@ -21,21 +21,25 @@ class ItemSetTableViewCell: UITableViewCell {
     // MARK: - Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
     
     // MARK: - Methods
-    func setup(itemSet: ItemSet) {
+    func setup(itemSetCoreData: ItemSetCoreData) {
         
-        if let validChampionURL = URL(string: itemSet.champion.thumbURL) {
+        let championThumbString = BaseURL.championThumb.replacingOccurrences(of: "{{stringId}}", with: itemSetCoreData.championId)
+        
+        if let validChampionURL = URL(string: championThumbString) {
             loadImage(with: validChampionURL, options: NukeOptions.championLoading, into: self.championThumb)
         }
         
-        self.itemSetName.text = itemSet.name
+        self.itemSetName.text = itemSetCoreData.name
         
-        for itemIndex in 0..<itemSet.items.count {
-            if let validItemURL = URL(string: itemSet.items[itemIndex].thumbURL) {
+        for itemIndex in 0..<itemSetCoreData.itemsId.count {
+            
+            let itemThumbString = BaseURL.itemThumb.replacingOccurrences(of: "{{id}}", with: itemSetCoreData.itemsId[itemIndex])
+            
+            if let validItemURL = URL(string: itemThumbString) {
                 loadImage(with: validItemURL, options: NukeOptions.itemLoading, into: self.items[itemIndex])
             }
         }
