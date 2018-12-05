@@ -203,8 +203,10 @@ extension NewItemSetViewController: ChampionSelectionDelegate {
 extension NewItemSetViewController: ItemSelectionDelegate {
     
     func selectItem(item: Item) {
-        self.selectedItems.append(item)
-        self.collectionView.reloadData()
+        if self.selectedItems.count <= 5 {
+            self.selectedItems.append(item)
+            self.collectionView.reloadData()
+        }
     }
 }
 

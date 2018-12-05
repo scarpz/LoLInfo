@@ -709,7 +709,7 @@
                                         <rect key="frame" x="0.0" y="46" width="244" height="354"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="ItemSelectionTableViewCell" rowHeight="62" id="0zZ-9J-VRc" customClass="ItemSelectionTableViewCell" customModule="LoLInfo" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="ItemSelectionTableViewCell" rowHeight="62" id="0zZ-9J-VRc" customClass="ItemSelectionTableViewCell" customModule="LoLInfo" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="244" height="62"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0zZ-9J-VRc" id="Jtq-29-b2g">
@@ -10435,6 +10435,6 @@ SgAIx1IACMdVAAjHZwAIx2oACMdvAAAAAAAABAEAAAAAAAAAbQAAAAAAAAAAAAAAAAAIx3E
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="e1v-yt-cru"/>
-        <segue reference="dsj-tE-vFE"/>
+        <segue reference="HdV-Xk-8hW"/>
     </inferredMetricsTieBreakers>
 </document>

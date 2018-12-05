@@ -157,6 +157,7 @@ extension SelectItemItemSetViewController: UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let delegate = self.delegate {
             delegate.selectItem(item: self.items[indexPath.row])
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
     
