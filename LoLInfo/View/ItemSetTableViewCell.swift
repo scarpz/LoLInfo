@@ -38,7 +38,7 @@ class ItemSetTableViewCell: UITableViewCell {
         for index in 0..<self.items.count {
             
             if itemSetCoreData.itemsId.indices.contains(index) {
-                self.items[index].isHidden = false
+                self.items[index].alpha = 1
                 
                 let itemThumbString = BaseURL.itemThumb.replacingOccurrences(of: "{{id}}", with: itemSetCoreData.itemsId[index])
                 
@@ -46,7 +46,7 @@ class ItemSetTableViewCell: UITableViewCell {
                     loadImage(with: validItemURL, options: NukeOptions.itemLoading, into: self.items[index])
                 } 
             } else {
-                self.items[index].isHidden = true
+                self.items[index].alpha = 0
             }
         }
 

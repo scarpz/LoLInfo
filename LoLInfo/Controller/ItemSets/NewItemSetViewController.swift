@@ -52,18 +52,23 @@ class NewItemSetViewController: UIViewController {
         
         self.itemSetTextField.resignFirstResponder()
         
-        if let itemSetName = self.itemSetTextField.text, let champion = self.selectedChampion, self.selectedItems.count > 0 && self.selectedItems.count <= 6 {
+        if let itemSetName = self.itemSetTextField.text, !itemSetName.isEmpty {
             
-            let itemSet = ItemSet(name: itemSetName, date: Date(), champion: champion, items: self.selectedItems)
-            
-            do {
-                try ItemSetServices.saveItemSet(itemSet: itemSet)
-                self.navigationController?.popViewController(animated: true)
-            } catch let error {
-                // TODO: -
+            if let champion = self.selectedChampion, self.selectedItems.count > 0 && self.selectedItems.count <= 6 {
+                
+                let itemSet = ItemSet(name: itemSetName, date: Date(), champion: champion, items: self.selectedItems)
+                
+                do {
+                    try ItemSetServices.saveItemSet(itemSet: itemSet)
+                    self.navigationController?.popViewController(animated: true)
+                } catch {
+                    self.createAlert(title: "Oops", message: "An error has occurred when trying to save this Item Set. Please try again.")
+                }
+            } else {
+                self.createAlert(title: "Oops", message: "There is an error in this Item Set. Or you didn't select a Champion or you didn't pick any Item. Please try again")
             }
         } else {
-            self.createAlert(title: "Oops", message: "There is an error in this Item Set. Or you didn't select a Champion or you didn't pick any item. Please try again")
+            self.createAlert(title: "Oops", message: "Please, choose a name for your Item Set.")
         }
     }
     

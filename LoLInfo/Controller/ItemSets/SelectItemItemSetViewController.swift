@@ -158,6 +158,10 @@ extension SelectItemItemSetViewController: UITableViewDelegate, UITableViewDataS
         if let delegate = self.delegate {
             delegate.selectItem(item: self.items[indexPath.row])
             tableView.deselectRow(at: indexPath, animated: true)
+            
+            self.searchTextField.text = nil
+            self.items = self.allItems
+            self.tableView.reloadData()
         }
     }
     

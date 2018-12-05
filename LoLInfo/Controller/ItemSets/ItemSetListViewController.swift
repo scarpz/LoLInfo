@@ -76,7 +76,7 @@ extension ItemSetListViewController {
             
             self.tableView.reloadData()
         } catch {
-            // TODO: - 
+            self.createAlert(title: "Oops", message: "An error has occurred when trying to get all Item Sets. Please try again.")
         }
     }
 }
@@ -127,7 +127,7 @@ extension ItemSetListViewController: UITableViewDelegate, UITableViewDataSource 
                 // Remove beautifully the cell from the Table View
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
             } catch {
-                // TODO:
+                self.createAlert(title: "Oops", message: "An error has occurred when trying to delete this Item Sets. Please try again.")
             }
         }
     }    
