@@ -63,6 +63,12 @@ class SkinViewController: UIViewController {
 extension SkinViewController {
     
     private func setupSkinView() {
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(zoom(_:)))
+        tap.numberOfTapsRequired = 2
+        
+        self.skinImage.addGestureRecognizer(tap)
+        
         self.scroll.delegate = self
         
         self.skinName.text = self.skin.name
@@ -73,6 +79,27 @@ extension SkinViewController {
             loadImage(with: validUrl, options: NukeOptions.skinLoading, into: self.skinImage)
         }
     }
+    
+    @objc private func zoom(_ tap: UITapGestureRecognizer) {
+        
+        if self.scroll.zoomScale > (self.scroll.maximumZoomScale / 2) {
+            self.scroll.setZoomScale(1, animated: true)
+        } else {
+            
+            let point = tap.location(in: self.skinImage)
+            let scrollViewSize = self.scroll.bounds.size
+            
+            let width = scrollViewSize.width / scroll.maximumZoomScale
+            let height = scrollViewSize.height / scroll.maximumZoomScale
+            let xPoint = point.x - (width/2.0)
+            let yPoint = point.y - (height/2.0)
+            
+            let rect = CGRect(x: xPoint, y: yPoint, width: width, height: height)
+            scroll.zoom(to: rect, animated: true)
+            
+            self.scroll.setZoomScale(5, animated: true)
+        }
+    }
 }
 
 
@@ -81,5 +108,35 @@ extension SkinViewController: UIScrollViewDelegate {
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return self.skinImage
+    }
+    
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        
+        // Prevent from going out of bounds
+        if scrollView.zoomScale > scrollView.minimumZoomScale {
+
+            // TODO: -
+            if let image = self.skinImage.image {
+                
+                let widthRatio = self.skinImage.frame.width / image.size.width
+                let heightRatio = self.skinImage.frame.height / image.size.height
+                
+                let ratio = widthRatio < heightRatio ? widthRatio : heightRatio
+                
+                let newWidth = image.size.width * ratio
+                let newHeight = image.size.height * ratio
+                
+                let left = 0.5 * (newWidth * scrollView.zoomScale >
+                    self.skinImage.frame.width ? (newWidth - self.skinImage.frame.width) :
+                    (scrollView.frame.width - scrollView.contentSize.width))
+                let top = 0.5 * (newHeight * scrollView.zoomScale >
+                    self.skinImage.frame.height ? (newHeight - self.skinImage.frame.height) :
+                    (scrollView.frame.height - scrollView.contentSize.height))
+                
+                scrollView.contentInset = UIEdgeInsets(top: top, left: left, bottom: top, right: left)
+            }
+        } else {
+            scrollView.contentInset = UIEdgeInsets.zero
+        }
     }
 }

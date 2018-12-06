@@ -187,7 +187,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D0r-R5-wfY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Items" id="xNk-Kf-gt3">
+                    <navigationItem key="navigationItem" title="Items" largeTitleDisplayMode="never" id="xNk-Kf-gt3">
                         <barButtonItem key="rightBarButtonItem" image="collectionIcon" id="0ay-d7-Ghh">
                             <connections>
                                 <action selector="changeDisplayMode:" destination="3Bh-KL-VeB" id="hzP-9z-TFD"/>

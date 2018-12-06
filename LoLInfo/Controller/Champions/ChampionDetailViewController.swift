@@ -59,14 +59,7 @@ class ChampionDetailViewController: UITableViewController {
         self.loadChampionDetail()
     }
     
-    
-    // MARK: - Action
-    @IBAction func skillsDetails(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "SkillSegue", sender: nil)
-    }
-    
-    
-    
+
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SkinSegue" {
@@ -207,7 +200,6 @@ extension ChampionDetailViewController {
             loadImage(with: eURL, options: NukeOptions.skillLoading, into: self.eSkill)
             loadImage(with: rURL, options: NukeOptions.skillLoading, into: self.rSkill)
         }
-        
     }
 }
 
@@ -215,11 +207,13 @@ extension ChampionDetailViewController {
 // MARK: - Table View Methods
 extension ChampionDetailViewController {
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 817
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 3 {
+            self.performSegue(withIdentifier: "SkillSegue", sender: nil)
+        }
     }
     
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
 }

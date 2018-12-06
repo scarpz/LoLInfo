@@ -175,7 +175,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xpa-VQ-3vr"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Item Sets" id="83N-gd-xA0">
+                    <navigationItem key="navigationItem" title="Item Sets" largeTitleDisplayMode="never" id="83N-gd-xA0">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="y1z-9T-58b">
                             <connections>
                                 <action selector="addNewItemSegue:" destination="jmv-tM-ReD" id="euu-h0-JSo"/>
