@@ -230,8 +230,11 @@ extension NewItemSetViewController: DeleteItemCellDelegate {
             // Remove the image from the datasource
             self.selectedItems.remove(at: indexPath.row)
             
+            
+            // TODO:
             // Remove beautifully the cell from the Collection View
-            self.collectionView.deleteItems(at: [indexPath])
+//            self.collectionView.deleteItems(at: [indexPath])
+            self.collectionView.reloadData()
         }
     }
     

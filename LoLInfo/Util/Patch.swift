@@ -10,5 +10,5 @@ import Foundation
 
 /// Struct responsible to store the current Patch of the game
 struct Patch {
-    static var patch = "8.23.1"
+    static var patch = "8.24.1"
 }
