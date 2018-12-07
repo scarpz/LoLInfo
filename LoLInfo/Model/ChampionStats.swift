@@ -19,8 +19,8 @@ struct ChampionStats {
     var armorPerLevel: Double
     var magicResist: Double
     var mrPerLevel: Double
-    var attackDamage: Double
-    var attackDamagePerLevel: Double
+    var damage: Double
+    var damagePerLevel: Double
     
     init(dict: [String : Any]) {
         self.hp = dict["hp"] as? Double ?? 0
@@ -32,7 +32,7 @@ struct ChampionStats {
         self.armorPerLevel = dict["armorperlevel"] as? Double ?? 0
         self.magicResist = dict["spellblock"] as? Double ?? 0
         self.mrPerLevel = dict["spellblockperlevel"] as? Double ?? 0
-        self.attackDamage = dict["attackdamage"] as? Double ?? 0
-        self.attackDamagePerLevel = dict["attackdamageperlevel"] as? Double ?? 0
+        self.damage = dict["attackdamage"] as? Double ?? 0
+        self.damagePerLevel = dict["attackdamageperlevel"] as? Double ?? 0
     }
 }

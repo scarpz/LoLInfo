@@ -171,12 +171,12 @@ extension ChampionDetailViewController {
     /// - Parameter stats: Champion Stats
     private func displayChampionStats(stats: ChampionStats) {
         
-        self.hpLabel.text = "\(stats.hp)\n(+\(stats.hpPerLevel) per level)"
-        self.manaLabel.text = "\(stats.mp)\n(+\(stats.mpPerLevel) per level)"
-        self.damageLabel.text = "\(stats.attackDamage)\n(+\(stats.attackDamagePerLevel) per level)"
-        self.armorLabel.text = "\(stats.armor)\n(+\(stats.armorPerLevel) per level)"
-        self.mrLabel.text = "\(stats.magicResist)\n(+\(stats.mrPerLevel) per level)"
-        self.moveSpeedLabel.text = "\(stats.moveSpeed)"
+        self.hpLabel.text = self.formatStat(baseValue: stats.hp, valuePerLevel: stats.hpPerLevel)
+        self.manaLabel.text = self.formatStat(baseValue: stats.mp, valuePerLevel: stats.mpPerLevel)
+        self.damageLabel.text = self.formatStat(baseValue: stats.damage, valuePerLevel: stats.damagePerLevel)
+        self.armorLabel.text = self.formatStat(baseValue: stats.armor, valuePerLevel: stats.armorPerLevel)
+        self.mrLabel.text = self.formatStat(baseValue: stats.magicResist, valuePerLevel: stats.mpPerLevel)
+        self.moveSpeedLabel.text = self.formatStat(baseValue: stats.moveSpeed, valuePerLevel: nil)
     }
     
     /// Method responsible to display all the skills of the Champion
@@ -199,6 +199,33 @@ extension ChampionDetailViewController {
             loadImage(with: wURL, options: NukeOptions.skillLoading, into: self.wSkill)
             loadImage(with: eURL, options: NukeOptions.skillLoading, into: self.eSkill)
             loadImage(with: rURL, options: NukeOptions.skillLoading, into: self.rSkill)
+        }
+    }
+    
+    /// Method responsible to format the value of a status to display in the view
+    /// in a right way
+    ///
+    /// - Parameters:
+    ///   - baseValue: Base value of a stat
+    ///   - valuePerLevel: Value earned per level of the stat
+    /// - Returns: Returns a formatted String to be displayed in the view
+    private func formatStat(baseValue: Double, valuePerLevel: Double?) -> String {
+        if let validValuePerLevel = valuePerLevel {
+            return "\(self.format(baseValue))\n(\(self.format(validValuePerLevel)) per level)"
+        } else {
+            return self.format(baseValue)
+        }
+    }
+    
+    /// Method to check the amount of decimal places, if the number is not natural
+    ///
+    /// - Parameter value: Value to be checked
+    /// - Returns: A String value of the number without any decimal place or a number with only 2 decimal places
+    private func format(_ value: Double) -> String {
+        if value == rint(value) {
+            return "\(Int(value))"
+        } else {
+            return String(format: "%.2f", value)
         }
     }
 }
