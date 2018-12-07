@@ -15,7 +15,7 @@ class NewItemSetViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var itemSetTextField: UITextField!
     
-    // With champion
+    // With Champion
     @IBOutlet weak var championView: UIView!
     @IBOutlet weak var championThumb: UIImageView!
     @IBOutlet weak var championName: UILabel!
@@ -118,6 +118,8 @@ class NewItemSetViewController: UIViewController {
 // MARK: - Private Methods
 extension NewItemSetViewController {
     
+    /// Method responsible to setup all the stuff of this View Controller
+    /// Set all the information about the Collection View and Text Field Datasource and Delegate.
     private func setupNewItemSetView() {
         
         self.itemSetTextField.delegate = self
@@ -127,12 +129,15 @@ extension NewItemSetViewController {
         
     }
     
+    /// Method responsible to check the existance of a Champion
+    /// to display the right view between the one with the Champion
+    /// and the one without it
     private func displayRightView() {
-        
         self.championView.isHidden = (self.selectedChampion == nil)
         self.noChampionView.isHidden = (self.selectedChampion != nil)
     }
     
+    /// Method responsible to display the selected Champion
     private func displayChampion() {
         if let validChampion = self.selectedChampion {
             if let validURL = URL(string: validChampion.thumbURL) {
@@ -154,9 +159,14 @@ extension NewItemSetViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemSetCollectionViewCell", for: indexPath) as? ItemSetCollectionViewCell {
+            
+            // If the Index Path IS NOT the same value as the total amount of the items in Selected Items Array,
+            // display the item and set the delegate of it to this View Controller
             if indexPath.row != self.selectedItems.count {
                 cell.setup(item: self.selectedItems[indexPath.row], delegate: self)
             } else {
+                // Otherwise, setup it with nil values to display
+                // the Add Item placeholder
                 cell.setup(item: nil, delegate: nil)
             }
             return cell
@@ -169,9 +179,12 @@ extension NewItemSetViewController: UICollectionViewDelegate, UICollectionViewDa
         
         self.itemSetTextField.resignFirstResponder()
         
+        // If the Index Path IS NOT the same value as the total amount of the items in Selected Items Array,
+        // there is an Item in there and perform to the Detail of it
         if indexPath.row != self.selectedItems.count {
             self.performSegue(withIdentifier: "ItemDetailSegue", sender: self.selectedItems[indexPath.row])
         } else {
+            // Otherwise, goes to the View to select a new Item
             self.performSegue(withIdentifier: "SelectItemSegue", sender: nil)
         }
     }
@@ -196,6 +209,10 @@ extension NewItemSetViewController: UITextFieldDelegate {
 // MARK: - Champion Selection Delegate
 extension NewItemSetViewController: ChampionSelectionDelegate {
     
+    /// Method from Champion Selection Delegate to set the selected
+    /// Champion to this view and show those information to the User
+    ///
+    /// - Parameter champion: Selected Champion to be displayed
     func selectChampion(champion: Champion) {
         self.selectedChampion = champion
         self.displayRightView()
@@ -207,6 +224,11 @@ extension NewItemSetViewController: ChampionSelectionDelegate {
 // MARK: - Item Selection Delegate
 extension NewItemSetViewController: ItemSelectionDelegate {
     
+    /// Method from Item Selection Delegate to set the selected
+    /// Item to this view and show those information to the User
+    /// only if there is not already 6 Items selected
+    ///
+    /// - Parameter item: Selected Item to be added to the list and displayed
     func selectItem(item: Item) {
         if self.selectedItems.count <= 5 {
             self.selectedItems.append(item)
@@ -230,10 +252,7 @@ extension NewItemSetViewController: DeleteItemCellDelegate {
             // Remove the image from the datasource
             self.selectedItems.remove(at: indexPath.row)
             
-            
-            // TODO:
-            // Remove beautifully the cell from the Collection View
-//            self.collectionView.deleteItems(at: [indexPath])
+            // Reload Collection View with the updated datasource
             self.collectionView.reloadData()
         }
     }

@@ -38,6 +38,9 @@ class ItemListViewController: UIViewController {
     
     
     // MARK: - Actions
+    /// Funcion called when pressed the Bar Button Item in the Nav Bar.
+    /// It changes the icon between a list and grid icon
+    /// and display the Table View and hide Collection View or vice-versa
     @IBAction func changeDisplayMode(_ sender: UIBarButtonItem) {
         
         self.isDisplayingAsTable = !self.isDisplayingAsTable

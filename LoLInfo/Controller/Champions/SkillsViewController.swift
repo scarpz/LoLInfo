@@ -40,6 +40,8 @@ class SkillsViewController: UITableViewController {
 // MARK: - Private Methods
 extension SkillsViewController {
     
+    /// Method reponsible to display all the information of
+    /// the Skills and the Passive received from the last View Controller
     private func displaySkills() {
         
         if let passiveURL = URL(string: self.passive.thumbURL) {

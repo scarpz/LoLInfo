@@ -85,6 +85,9 @@ class ChampionDetailViewController: UITableViewController {
 // MARK: - Private Methods
 extension ChampionDetailViewController {
     
+    /// Method responsible to setup all the stuff of this View Controller
+    /// Set all the information about the Collection View Datasource and Delegate.
+    /// It also puts the name of the current Champion in the Nav Bar
     private func setupChampionDetailView() {
         
         self.navigationItem.title = self.champion.name
@@ -278,6 +281,8 @@ extension ChampionDetailViewController: UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    /// Method used to get the current visible cell of the Collection View and its index to select
+    /// the right page of the Page Control
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
         let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)

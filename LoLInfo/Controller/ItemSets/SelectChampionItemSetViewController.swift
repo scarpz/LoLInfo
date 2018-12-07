@@ -9,6 +9,10 @@
 import UIKit
 
 protocol ChampionSelectionDelegate: class {
+    /// Method from Champion Selection Delegate to set the selected
+    /// Champion to this view and show those information to the User
+    ///
+    /// - Parameter champion: Selected Champion to be displayed
     func selectChampion(champion: Champion)
 }
 
@@ -92,6 +96,9 @@ class SelectChampionItemSetViewController: UIViewController {
 // MARK: - Private Methods
 extension SelectChampionItemSetViewController {
     
+    /// Method responsible to setup all the stuff of this View Controller
+    /// Set all the information about the Table View and Text Field Datasource and Delegate.
+    /// It also set a Gesture Recognizer to the Background view to perform its actions
     private func setupSelectChampionView() {
         
         self.tableView.delegate = self
@@ -117,6 +124,9 @@ extension SelectChampionItemSetViewController {
         }
     }
     
+    /// Method responsible to see what is to be dismissed.
+    /// If the search is active, the action dismiss it.
+    /// If not, dismiss the modal View Controller
     @objc private func dismissAction() {
         
         if searchTextField.isFirstResponder {

@@ -9,6 +9,11 @@
 import UIKit
 
 protocol ItemSelectionDelegate: class {
+    /// Method from Item Selection Delegate to set the selected
+    /// Item to this view and show those information to the User
+    /// only if there is not already 6 Items selected
+    ///
+    /// - Parameter item: Selected Item to be added to the list and displayed
     func selectItem(item: Item)
 }
 
@@ -92,6 +97,9 @@ class SelectItemItemSetViewController: UIViewController {
 // MARK: - Private Methods
 extension SelectItemItemSetViewController {
     
+    /// Method responsible to setup all the stuff of this View Controller
+    /// Set all the information about the Table View and Text Field Datasource and Delegate.
+    /// It also set a Gesture Recognizer to the Background view to perform its actions
     private func setupSelectItemView() {
         
         self.tableView.delegate = self
@@ -117,6 +125,9 @@ extension SelectItemItemSetViewController {
         }
     }
     
+    /// Method responsible to see what is to be dismissed.
+    /// If the search is active, the action dismiss it.
+    /// If not, dismiss the modal View Controller
     @objc private func dismissAction() {
         
         if searchTextField.isFirstResponder {

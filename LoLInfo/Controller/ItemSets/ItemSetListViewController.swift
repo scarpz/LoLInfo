@@ -97,11 +97,7 @@ extension ItemSetListViewController: UITableViewDelegate, UITableViewDataSource 
             return UITableViewCell()
         }
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.performSegue(withIdentifier: "ItemSetDetailSegue", sender: self.itemSets[indexPath.row])
-    }
-    
+
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 147
     }
@@ -116,6 +112,9 @@ extension ItemSetListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
+        // When the Delete action is called from the swipe on cell,
+        // try to delete in Core Data the current Item Set Core Data object.
+        // Also removes it from the datasources and remove the cell from the list.
         if editingStyle == .delete {
             do {
                 try ItemSetServices.removeItemSet(itemSet: self.itemSetsCoreData[indexPath.row])
