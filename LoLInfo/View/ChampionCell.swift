@@ -24,6 +24,9 @@ class ChampionCell: UICollectionViewCell {
     
     
     // MARK: - Methods
+    /// Display the information of a Champion in this cell
+    ///
+    /// - Parameter champion: Champion to get the information from
     func setup(champion: Champion) {
         
         if let thumbURL = URL(string: champion.thumbURL) {

@@ -24,9 +24,9 @@ class ResponseParser {
         // Goes through all the Champions keys
         for key in dict.keys {
             
-            // Garantee it's a dictionary
+            // Guarantees it's a dictionary
             if let championDict = dict[key] as? [String : Any] {
-                // Append to the array a new Champion from it's dictionary
+                // Appends to the array a new Champion from it's dictionary
                 allChampions.append(Champion(dict: championDict))
             }
         }
@@ -87,7 +87,7 @@ class ResponseParser {
             }
         }
         
-        // Return the Champion Detail 
+        // Returns the Champion Detail
         return ChampionDetail(story: story, skins: skins, info: championInfo, stats: championStats, passive: passiveSkill, skills: skills)
     }
     
@@ -105,7 +105,7 @@ class ResponseParser {
         
         // Goes through all the keys of the dictionary
         for key in dict.keys {
-            // Garantee the data of this Item structure
+            // Guarantees the data of this Item structure
             // and the int value of the key (given by the API)
             if let itemDict = dict[key] as? [String : Any], let itemId = Int(key) {
                 // Append to the array a new Item from it's dictionary and key

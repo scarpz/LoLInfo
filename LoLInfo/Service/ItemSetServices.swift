@@ -25,8 +25,7 @@ class ItemSetServices {
             let request: NSFetchRequest = NSFetchRequest<ItemSetCoreData>()
             request.entity = NSEntityDescription.entity(forEntityName: "ItemSetCoreData", in: CoreDataManager.shared.persistentContainer.viewContext)
             
-            
-            // Perform search
+            // Performs search
             itemSetCoreData = try CoreDataManager.shared.persistentContainer.viewContext.fetch(request)
         }
         catch {
@@ -42,6 +41,7 @@ class ItemSetServices {
     /// - Throws: Throw an error if something goes wrong
     static func saveItemSet(itemSet: ItemSet) throws {
         
+        // Creates a Core Data object based on the ItemSet model
         let itemSetCoreData = ItemSetCoreData()
         itemSetCoreData.name = itemSet.name
         itemSetCoreData.date = itemSet.date
@@ -51,10 +51,10 @@ class ItemSetServices {
         }
         
         do {
-            // Sdd object to be saved to the context
+            // Adds object to be saved to the context
             CoreDataManager.shared.persistentContainer.viewContext.insert(itemSetCoreData)
             
-            // Persist changes at the context
+            // Persists changes at the context
             try CoreDataManager.shared.persistentContainer.viewContext.save()
         }
         catch {
@@ -69,10 +69,10 @@ class ItemSetServices {
     static func removeItemSet(itemSet: ItemSetCoreData) throws {
         
         do {
-            // Delete element from context
+            // Deletes element from context
             CoreDataManager.shared.persistentContainer.viewContext.delete(itemSet)
             
-            // Persist the operation
+            // Persists the operation
             try CoreDataManager.shared.persistentContainer.viewContext.save()
         }
         catch {

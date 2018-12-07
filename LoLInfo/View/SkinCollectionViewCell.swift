@@ -17,6 +17,9 @@ class SkinCollectionViewCell: UICollectionViewCell {
     
     
     // MARK: - Methods
+    /// Display the Skin
+    ///
+    /// - Parameter skin: Skin to get the image URL from
     func setup(skin: Skin) {
         if let validURL = URL(string: skin.splashURL) {
             loadImage(with: validURL, options: NukeOptions.skinLoading, into: self.skinImage)

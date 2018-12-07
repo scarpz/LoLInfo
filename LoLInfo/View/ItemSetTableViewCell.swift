@@ -27,14 +27,17 @@ class ItemSetTableViewCell: UITableViewCell {
     // MARK: - Methods
     func setup(itemSetCoreData: ItemSetCoreData) {
         
+        // Setup the string of URL
         let championThumbString = BaseURL.championThumb.replacingOccurrences(of: "{{stringId}}", with: itemSetCoreData.championId)
         
+        // Gets a valid valid
         if let validChampionURL = URL(string: championThumbString) {
             loadImage(with: validChampionURL, options: NukeOptions.championLoading, into: self.championThumb)
         }
         
         self.itemSetName.text = itemSetCoreData.name
         
+        // Fills all the Items images with its Id and hides all the remaining Image Views 
         for index in 0..<self.items.count {
             
             if itemSetCoreData.itemsId.indices.contains(index) {

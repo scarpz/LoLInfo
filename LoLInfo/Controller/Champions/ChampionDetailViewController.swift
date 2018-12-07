@@ -111,7 +111,7 @@ extension ChampionDetailViewController {
     /// Method responsible to display all the information about the Champion
     private func displayChampionDetails() {
         
-        // Garantee the image URL
+        // Guarantees the image URL
         guard let thumbURL = URL(string: self.champion.thumbURL) else {
             return
         }
@@ -123,7 +123,7 @@ extension ChampionDetailViewController {
         self.championName.text = self.champion.name
         self.championTitle.text = self.champion.title
         
-        // Garantee the details inside the Champion.
+        // Guarantees the details inside the Champion.
         // It's not 100% necessary because this function is called after
         // a verification of the API but just to make sure
         if let championDetail = self.champion.championDetail {
@@ -186,7 +186,7 @@ extension ChampionDetailViewController {
     ///   - skills: Active Skills
     private func displaySkills(passive: Skill, skills: [Skill]) {
         
-        // Garantee all the string URLs
+        // Guarantees all the string URLs
         if let passiveURL = URL(string: passive.thumbURL),
             let qURL = URL(string: skills[0].thumbURL),
             let wURL = URL(string: skills[1].thumbURL),

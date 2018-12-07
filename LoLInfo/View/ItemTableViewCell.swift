@@ -20,6 +20,9 @@ class ItemTableViewCell: UITableViewCell {
     
     
     // MARK: - Methods
+    /// Display the information of an Item in this cell
+    ///
+    /// - Parameter item: Item to get the information from
     func setup(item: Item) {
         if let validURL = URL(string: item.thumbURL) {
             loadImage(with: validURL, options: NukeOptions.itemLoading, into: self.itemThumb)

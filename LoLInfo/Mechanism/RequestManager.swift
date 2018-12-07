@@ -20,21 +20,22 @@ class RequestManager {
     ///   - completion: Dictionary of the response received from the request
     static func request(url: URL, method: RequestMethod, headers: [String : String]?, body: Data?, completion: @escaping (_ response: [String : Any]?, _ error: Error?) -> Void) {
         
-        // Create a Requesr
+        // Creates a Requesr
         var request = URLRequest(url: url)
         
-        // Fill the request information
+        // Fills the request information
         request.httpMethod = method.rawValue
         request.httpBody = body
         request.allHTTPHeaderFields = headers
         
-        // Perform the task
+        // Performs the task
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
-            if error == nil {
+            if let data = data {
                 
                 do {
-                    let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : Any]
+                    // Gets a Dictionary value of the data received from the server
+                    let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String : Any]
                     
                     completion(json, nil)
                 } catch let error {

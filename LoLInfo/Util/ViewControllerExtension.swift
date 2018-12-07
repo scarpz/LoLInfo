@@ -10,6 +10,12 @@ import UIKit
 
 extension UIViewController {
     
+    /// Creates an default alert
+    ///
+    /// - Parameters:
+    ///   - title: Title of the alert
+    ///   - message: Message of the alert
+    ///   - okButton: Text of the button. It's an "Ok" by default
     func createAlert(title: String?, message: String?, okButton: String = "Ok") {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: okButton, style: .default, handler: nil))

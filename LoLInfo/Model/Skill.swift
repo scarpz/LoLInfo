@@ -8,14 +8,6 @@
 
 import Foundation
 
-enum SkillType {
-    case passive
-    case q
-    case w
-    case e
-    case r
-}
-
 struct Skill {
     
     var type: SkillType

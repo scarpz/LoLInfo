@@ -43,6 +43,7 @@
 		188F490C21ACCE2600DA398F /* SkinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188F490B21ACCE2600DA398F /* SkinCollectionViewCell.swift */; };
 		188F490E21ACDAFD00DA398F /* SkinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188F490D21ACDAFD00DA398F /* SkinViewController.swift */; };
 		189B63BE21AAFB7800A1603B /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189B63BD21AAFB7800A1603B /* ViewExtension.swift */; };
+		189CC98F21B9FB9500EB6F49 /* SkillType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189CC98E21B9FB9500EB6F49 /* SkillType.swift */; };
 		18A31E3821B020AE0085A32E /* SelectChampionItemSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A31E3721B020AE0085A32E /* SelectChampionItemSetViewController.swift */; };
 		18A31E3A21B023960085A32E /* ChampionSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A31E3921B023960085A32E /* ChampionSelectionTableViewCell.swift */; };
 		18CB10EC21B0E18300DB41EC /* ItemSetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB10EB21B0E18300DB41EC /* ItemSetCollectionViewCell.swift */; };
@@ -98,6 +99,7 @@
 		188F490B21ACCE2600DA398F /* SkinCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCollectionViewCell.swift; sourceTree = "<group>"; };
 		188F490D21ACDAFD00DA398F /* SkinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinViewController.swift; sourceTree = "<group>"; };
 		189B63BD21AAFB7800A1603B /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		189CC98E21B9FB9500EB6F49 /* SkillType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillType.swift; sourceTree = "<group>"; };
 		18A31E3721B020AE0085A32E /* SelectChampionItemSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChampionItemSetViewController.swift; sourceTree = "<group>"; };
 		18A31E3921B023960085A32E /* ChampionSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		18CB10EB21B0E18300DB41EC /* ItemSetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSetCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				1837A78521A71D4C001F8ADA /* ChampionInfo.swift */,
 				1837A78721A71DC3001F8ADA /* ChampionStats.swift */,
 				1837A78921A71EEA001F8ADA /* Skill.swift */,
+				189CC98E21B9FB9500EB6F49 /* SkillType.swift */,
 				180F8E0321A822AE0047C8F0 /* Item.swift */,
 				184CCBD421AF19E400BA27B0 /* ItemSet.swift */,
 				18FF17B121B83A41005546F5 /* ItemSetCoreData.swift */,
@@ -454,6 +457,7 @@
 				18639BA221B2D35D0043F8CE /* ItemSetServices.swift in Sources */,
 				1885066121A5C2D900D77E0E /* RequestManager.swift in Sources */,
 				188F490C21ACCE2600DA398F /* SkinCollectionViewCell.swift in Sources */,
+				189CC98F21B9FB9500EB6F49 /* SkillType.swift in Sources */,
 				18CB10EE21B0F11100DB41EC /* SelectItemItemSetViewController.swift in Sources */,
 				184CCBD521AF19E400BA27B0 /* ItemSet.swift in Sources */,
 				1885066321A5C32B00D77E0E /* RequestMethod.swift in Sources */,

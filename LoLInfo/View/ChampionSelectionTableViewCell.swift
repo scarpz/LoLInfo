@@ -24,6 +24,9 @@ class ChampionSelectionTableViewCell: UITableViewCell {
 
 
     // MARK: - Methods
+    /// Display the information of a Champion in this cell
+    ///
+    /// - Parameter champion: Champion to get the information from
     func setup(champion: Champion) {
         if let validURL = URL(string: champion.thumbURL) {
             loadImage(with: validURL, options: NukeOptions.championLoading, into: self.championThumb)
