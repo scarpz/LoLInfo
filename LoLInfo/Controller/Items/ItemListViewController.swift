@@ -27,6 +27,8 @@ class ItemListViewController: UIViewController {
     // Property to control the display mode
     var isDisplayingAsTable: Bool = true
     
+    private let refreshControl = UIRefreshControl()
+    
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -94,23 +96,46 @@ extension ItemListViewController {
         self.navigationItem.searchController = search
         self.navigationItem.hidesSearchBarWhenScrolling = false
         
+        self.refreshControl.tintColor = #colorLiteral(red: 0.4885632396, green: 0.4259443283, blue: 0.3007359803, alpha: 1)
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Load itens...")
         
+        if #available(iOS 10.0, *) {
+            self.tableView.refreshControl = refreshControl
+        } else {
+            self.tableView.addSubview(refreshControl)
+        }
+        
+        if #available(iOS 10.0, *) {
+            self.collectionView.refreshControl = refreshControl
+        } else {
+            self.collectionView.addSubview(refreshControl)
+        }
+        
+        self.refreshControl.addTarget(self, action: #selector(getAllItems), for: .valueChanged)
     }
     
     /// Method responsible to load all the Items, fill the data source and backup properties
     /// and reaload the Collection View / Table View with the retrieved values
-    private func getAllItems() {
+    @objc private func getAllItems() {
         ItemServices.getAllItems(itens: { [unowned self] items in
             
             self.allItems = items
             self.items = items
             
             DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
                 self.collectionView.reloadData()
                 self.tableView.reloadData()
             }
         }) { [unowned self] error in
-            self.createAlert(title: "Error", message: error.localizedDescription)
+            
+            DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
+                
+                self.createAlert(title: "Error", message: error.localizedDescription, action1Text: "Retry", action1: { [unowned self] _ in
+                    self.getAllItems()
+                    }, action2Text: "Cancel", action2: nil)
+            }
         }
     }
     

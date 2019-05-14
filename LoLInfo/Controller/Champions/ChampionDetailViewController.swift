@@ -50,6 +50,7 @@ class ChampionDetailViewController: UITableViewController {
     // MARK: - Properties
     var champion: Champion!
     let patch = PatchServices.getPatchFromUserDefaults()!
+
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -107,7 +108,11 @@ extension ChampionDetailViewController {
                 self.collectionView.reloadData()
             }
         }) { [unowned self] error in
-            self.createAlert(title: "Error", message: error.localizedDescription)
+            DispatchQueue.main.async {
+                self.createAlert(title: "Error", message: error.localizedDescription, action1Text: "Retry", action1: { [unowned self] _ in
+                    self.loadChampionDetail()
+                    }, action2Text: "Cancel", action2: nil)
+            }
         }
     }
     

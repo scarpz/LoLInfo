@@ -245,8 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				18BBCC99228B6070007BDD7D /* Initial */,
-				180F8E0021A8223B0047C8F0 /* Items */,
 				1837A77E21A7197F001F8ADA /* Champions */,
+				180F8E0021A8223B0047C8F0 /* Items */,
 				18476BBB21AF147C00AEB06F /* ItemSets */,
 			);
 			path = Controller;
