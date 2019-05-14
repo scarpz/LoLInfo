@@ -93,7 +93,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9MT-zf-zVn"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Champions" id="oQQ-ou-kuK"/>
+                    <navigationItem key="navigationItem" title="Champions" id="oQQ-ou-kuK">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="refresh" id="ME0-Nw-BI3">
+                            <connections>
+                                <action selector="reloadChampions:" destination="F1V-tt-7ff" id="3sC-OK-wia"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

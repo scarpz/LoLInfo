@@ -188,9 +188,14 @@
                         <viewLayoutGuide key="safeArea" id="D0r-R5-wfY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Items" id="xNk-Kf-gt3">
-                        <barButtonItem key="rightBarButtonItem" image="collectionIcon" id="0ay-d7-Ghh">
+                        <barButtonItem key="leftBarButtonItem" image="collectionIcon" id="0ay-d7-Ghh">
                             <connections>
                                 <action selector="changeDisplayMode:" destination="3Bh-KL-VeB" id="hzP-9z-TFD"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="refresh" id="LxH-8Q-cxr">
+                            <connections>
+                                <action selector="reloadItens:" destination="3Bh-KL-VeB" id="7pD-lE-JAU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

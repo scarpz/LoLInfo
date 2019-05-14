@@ -21,8 +21,8 @@ class ChampionListViewController: UIViewController {
     private var allChampions = [Champion]()
     // Array of champions to be used as data source for the tableView
     private var champions = [Champion]()
-
-    private let refreshControl = UIRefreshControl()
+    
+    private var loading: LoadingView!
     
     
     // MARK: - Life Cycle
@@ -30,6 +30,12 @@ class ChampionListViewController: UIViewController {
         super.viewDidLoad()
         
         self.setupChampionListView()
+        self.getAllChampions()
+    }
+    
+    
+    // MARK: - Actions
+    @IBAction func reloadChampions(_ sender: UIBarButtonItem) {
         self.getAllChampions()
     }
 
@@ -56,6 +62,11 @@ extension ChampionListViewController {
     /// It also set the Search mechanism and setup the Search Bar in the Navigation
     private func setupChampionListView() {
         
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        guard let mainWindow = appDelegate.window else { return }
+        
+        self.loading = LoadingView(frame: mainWindow.frame)
+        
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.keyboardDismissMode = .onDrag
@@ -67,33 +78,25 @@ extension ChampionListViewController {
         
         self.navigationItem.searchController = search
         self.navigationItem.hidesSearchBarWhenScrolling = false
-        
-        self.refreshControl.tintColor = #colorLiteral(red: 0.4885632396, green: 0.4259443283, blue: 0.3007359803, alpha: 1)
-        self.refreshControl.attributedTitle = NSAttributedString(string: "Load champions...")
-
-        if #available(iOS 10.0, *) {
-            self.collectionView.refreshControl = refreshControl
-        } else {
-            self.collectionView.addSubview(refreshControl)
-        }
-        
-        self.refreshControl.addTarget(self, action: #selector(getAllChampions), for: .valueChanged)
-        
     }
     
     /// Method responsible to load all the Champions, fill the data source and backup properties
     /// and reaload the Collection View with the retrieved values
-    @objc private func getAllChampions() {
+    private func getAllChampions() {
+        
+        self.loading.show()
+        
         ChampionServices.getAllChampions(champions: { [unowned self] champions in
             self.allChampions = champions
             self.champions = champions
             
             DispatchQueue.main.async {
-                self.refreshControl.endRefreshing()
+                self.loading.hide()
                 self.collectionView.reloadData()
             }
         }) { [unowned self] error in
             DispatchQueue.main.async {
+                self.loading.hide()
                 self.createAlert(title: "Error", message: error.localizedDescription, action1Text: "Retry", action1: { [unowned self] _ in
                     self.getAllChampions()
                     }, action2Text: "Cancel", action2: nil)

@@ -27,7 +27,7 @@ class ItemListViewController: UIViewController {
     // Property to control the display mode
     var isDisplayingAsTable: Bool = true
     
-    private let refreshControl = UIRefreshControl()
+    private var loading: LoadingView!
     
     
     // MARK: - Life Cycle
@@ -56,6 +56,9 @@ class ItemListViewController: UIViewController {
         }
     }
     
+    @IBAction func reloadItens(_ sender: UIBarButtonItem) {
+        self.getAllItems()
+    }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -78,6 +81,11 @@ extension ItemListViewController {
     /// It also set the Search mechanism and setup the Search Bar in the Navigation
     private func setupItemListView() {
         
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        guard let mainWindow = appDelegate.window else { return }
+        
+        self.loading = LoadingView(frame: mainWindow.frame)
+        
         self.tableView.isHidden = !self.isDisplayingAsTable
         self.collectionView.isHidden = self.isDisplayingAsTable
         self.collectionView.alpha = 0
@@ -96,42 +104,28 @@ extension ItemListViewController {
         self.navigationItem.searchController = search
         self.navigationItem.hidesSearchBarWhenScrolling = false
         
-        self.refreshControl.tintColor = #colorLiteral(red: 0.4885632396, green: 0.4259443283, blue: 0.3007359803, alpha: 1)
-        self.refreshControl.attributedTitle = NSAttributedString(string: "Load itens...")
-        
-        if #available(iOS 10.0, *) {
-            self.tableView.refreshControl = refreshControl
-        } else {
-            self.tableView.addSubview(refreshControl)
-        }
-        
-        if #available(iOS 10.0, *) {
-            self.collectionView.refreshControl = refreshControl
-        } else {
-            self.collectionView.addSubview(refreshControl)
-        }
-        
-        self.refreshControl.addTarget(self, action: #selector(getAllItems), for: .valueChanged)
     }
     
     /// Method responsible to load all the Items, fill the data source and backup properties
     /// and reaload the Collection View / Table View with the retrieved values
-    @objc private func getAllItems() {
+    private func getAllItems() {
+        
+        self.loading.show()
+        
         ItemServices.getAllItems(itens: { [unowned self] items in
             
             self.allItems = items
             self.items = items
             
             DispatchQueue.main.async {
-                self.refreshControl.endRefreshing()
+                self.loading.hide()
                 self.collectionView.reloadData()
                 self.tableView.reloadData()
             }
         }) { [unowned self] error in
             
             DispatchQueue.main.async {
-                self.refreshControl.endRefreshing()
-                
+                self.loading.hide()
                 self.createAlert(title: "Error", message: error.localizedDescription, action1Text: "Retry", action1: { [unowned self] _ in
                     self.getAllItems()
                     }, action2Text: "Cancel", action2: nil)
@@ -228,7 +222,6 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
         let width = self.collectionView.frame.width / 4
         return CGSize(width: width - 5, height: width / 0.82)
     }
-
 }
 
 

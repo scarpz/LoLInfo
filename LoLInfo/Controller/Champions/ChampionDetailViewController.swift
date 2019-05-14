@@ -50,7 +50,8 @@ class ChampionDetailViewController: UITableViewController {
     // MARK: - Properties
     var champion: Champion!
     let patch = PatchServices.getPatchFromUserDefaults()!
-
+    private var loading: LoadingView!
+    
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -91,6 +92,11 @@ extension ChampionDetailViewController {
     /// It also puts the name of the current Champion in the Nav Bar
     private func setupChampionDetailView() {
         
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        guard let mainWindow = appDelegate.window else { return }
+        
+        self.loading = LoadingView(frame: mainWindow.frame)
+        
         self.navigationItem.title = self.champion.name
         
         self.collectionView.delegate = self
@@ -99,6 +105,8 @@ extension ChampionDetailViewController {
     
     /// Method responsible to get all the details about the selected Champion
     private func loadChampionDetail() {
+        
+        self.loading.show()
         
         ChampionServices.getChampionDetail(by: self.champion.stringId, championDetail: { [unowned self] championDetail in
             self.champion.championDetail = championDetail
@@ -111,7 +119,12 @@ extension ChampionDetailViewController {
             DispatchQueue.main.async {
                 self.createAlert(title: "Error", message: error.localizedDescription, action1Text: "Retry", action1: { [unowned self] _ in
                     self.loadChampionDetail()
-                    }, action2Text: "Cancel", action2: nil)
+                    }, action2Text: "Cancel", action2: { [unowned self] _ in
+                        DispatchQueue.main.async {
+                            self.navigationController?.popViewController(animated: true)
+                            self.loading.hide()
+                        }
+                })
             }
         }
     }
@@ -146,6 +159,8 @@ extension ChampionDetailViewController {
             // Set the paging of Skins of tbe Champion
             self.pageControl.numberOfPages = championDetail.skins.count
         }
+        
+        self.loading.hide()
     }
     
     /// Method responsible to set up the bars of Champion Info
