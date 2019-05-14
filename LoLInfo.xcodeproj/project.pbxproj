@@ -33,7 +33,6 @@
 		1885065621A5BCE500D77E0E /* Champion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1885065521A5BCE500D77E0E /* Champion.storyboard */; };
 		1885065821A5BD1E00D77E0E /* Item.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1885065721A5BD1E00D77E0E /* Item.storyboard */; };
 		1885065A21A5BDCB00D77E0E /* Champion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885065921A5BDCB00D77E0E /* Champion.swift */; };
-		1885065D21A5BF9900D77E0E /* Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885065C21A5BF9900D77E0E /* Patch.swift */; };
 		1885065F21A5C26500D77E0E /* ChampionServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885065E21A5C26500D77E0E /* ChampionServices.swift */; };
 		1885066121A5C2D900D77E0E /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885066021A5C2D900D77E0E /* RequestManager.swift */; };
 		1885066321A5C32B00D77E0E /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885066221A5C32B00D77E0E /* RequestMethod.swift */; };
@@ -46,6 +45,8 @@
 		189CC98F21B9FB9500EB6F49 /* SkillType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189CC98E21B9FB9500EB6F49 /* SkillType.swift */; };
 		18A31E3821B020AE0085A32E /* SelectChampionItemSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A31E3721B020AE0085A32E /* SelectChampionItemSetViewController.swift */; };
 		18A31E3A21B023960085A32E /* ChampionSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A31E3921B023960085A32E /* ChampionSelectionTableViewCell.swift */; };
+		18B57561228B4F00006CD2AF /* PatchServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B57560228B4F00006CD2AF /* PatchServices.swift */; };
+		18BBCC9B228B6082007BDD7D /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BBCC9A228B6082007BDD7D /* InitialViewController.swift */; };
 		18CB10EC21B0E18300DB41EC /* ItemSetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB10EB21B0E18300DB41EC /* ItemSetCollectionViewCell.swift */; };
 		18CB10EE21B0F11100DB41EC /* SelectItemItemSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB10ED21B0F11100DB41EC /* SelectItemItemSetViewController.swift */; };
 		18CB10F021B0F35900DB41EC /* ItemSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB10EF21B0F35900DB41EC /* ItemSelectionCollectionViewCell.swift */; };
@@ -89,7 +90,6 @@
 		1885065521A5BCE500D77E0E /* Champion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Champion.storyboard; sourceTree = "<group>"; };
 		1885065721A5BD1E00D77E0E /* Item.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Item.storyboard; sourceTree = "<group>"; };
 		1885065921A5BDCB00D77E0E /* Champion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Champion.swift; sourceTree = "<group>"; };
-		1885065C21A5BF9900D77E0E /* Patch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patch.swift; sourceTree = "<group>"; };
 		1885065E21A5C26500D77E0E /* ChampionServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionServices.swift; sourceTree = "<group>"; };
 		1885066021A5C2D900D77E0E /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		1885066221A5C32B00D77E0E /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
@@ -102,6 +102,8 @@
 		189CC98E21B9FB9500EB6F49 /* SkillType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillType.swift; sourceTree = "<group>"; };
 		18A31E3721B020AE0085A32E /* SelectChampionItemSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChampionItemSetViewController.swift; sourceTree = "<group>"; };
 		18A31E3921B023960085A32E /* ChampionSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		18B57560228B4F00006CD2AF /* PatchServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PatchServices.swift; path = LoLInfo/Util/PatchServices.swift; sourceTree = SOURCE_ROOT; };
+		18BBCC9A228B6082007BDD7D /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		18CB10EB21B0E18300DB41EC /* ItemSetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSetCollectionViewCell.swift; sourceTree = "<group>"; };
 		18CB10ED21B0F11100DB41EC /* SelectItemItemSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectItemItemSetViewController.swift; sourceTree = "<group>"; };
 		18CB10EF21B0F35900DB41EC /* ItemSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 		1885065021A5BB6500D77E0E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				18BBCC99228B6070007BDD7D /* Initial */,
 				180F8E0021A8223B0047C8F0 /* Items */,
 				1837A77E21A7197F001F8ADA /* Champions */,
 				18476BBB21AF147C00AEB06F /* ItemSets */,
@@ -255,6 +258,7 @@
 				1885065E21A5C26500D77E0E /* ChampionServices.swift */,
 				180F8E0521A823BE0047C8F0 /* ItemServices.swift */,
 				18639BA121B2D35D0043F8CE /* ItemSetServices.swift */,
+				18B57560228B4F00006CD2AF /* PatchServices.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -289,7 +293,6 @@
 		1885065B21A5BF8E00D77E0E /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				1885065C21A5BF9900D77E0E /* Patch.swift */,
 				1885066221A5C32B00D77E0E /* RequestMethod.swift */,
 				1885066421A5C47700D77E0E /* BaseUrl.swift */,
 				18EFAB6621A5D1C200C32067 /* NukeOptions.swift */,
@@ -300,6 +303,14 @@
 				18FF17B521B83E20005546F5 /* ViewControllerExtension.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		18BBCC99228B6070007BDD7D /* Initial */ = {
+			isa = PBXGroup;
+			children = (
+				18BBCC9A228B6082007BDD7D /* InitialViewController.swift */,
+			);
+			path = Initial;
 			sourceTree = "<group>";
 		};
 		1EF0B90F84DA3E9B7B5F45D5 /* Pods */ = {
@@ -429,6 +440,7 @@
 				1837A78821A71DC3001F8ADA /* ChampionStats.swift in Sources */,
 				181872E921AF4E3600BD2AFA /* NewItemSetViewController.swift in Sources */,
 				18EFAB6721A5D1C200C32067 /* NukeOptions.swift in Sources */,
+				18B57561228B4F00006CD2AF /* PatchServices.swift in Sources */,
 				1885066921A5C98700D77E0E /* ChampionCell.swift in Sources */,
 				1837A78A21A71EEA001F8ADA /* Skill.swift in Sources */,
 				18D5C15821A8AEDB00DEBC51 /* ItemCollectionViewCell.swift in Sources */,
@@ -451,11 +463,11 @@
 				18A31E3821B020AE0085A32E /* SelectChampionItemSetViewController.swift in Sources */,
 				18EAE30421ACFB1B00CA696F /* SkillsViewController.swift in Sources */,
 				1885066721A5C72100D77E0E /* ChampionListViewController.swift in Sources */,
-				1885065D21A5BF9900D77E0E /* Patch.swift in Sources */,
 				184CCBD921AF1BD300BA27B0 /* ItemSetTableViewCell.swift in Sources */,
 				1837A78621A71D4C001F8ADA /* ChampionInfo.swift in Sources */,
 				18639BA221B2D35D0043F8CE /* ItemSetServices.swift in Sources */,
 				1885066121A5C2D900D77E0E /* RequestManager.swift in Sources */,
+				18BBCC9B228B6082007BDD7D /* InitialViewController.swift in Sources */,
 				188F490C21ACCE2600DA398F /* SkinCollectionViewCell.swift in Sources */,
 				189CC98F21B9FB9500EB6F49 /* SkillType.swift in Sources */,
 				18CB10EE21B0F11100DB41EC /* SelectItemItemSetViewController.swift in Sources */,

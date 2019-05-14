@@ -13,31 +13,39 @@ class ChampionServices {
     /// Method responsible to get all Champions
     ///
     /// - Parameter completion: Returns the list of Champions, if existing
-    static func getAllChampions(completion: @escaping ([Champion]?) -> Void) {
+    static func getAllChampions(champions: @escaping ([Champion]) -> Void, failure: @escaping (Error) -> Void) {
         
-        // Guarantees the URL
-        guard let url = URL(string: BaseURL.championList) else {
-            completion(nil)
-            return
-        }
-        
-        // Performs the request
-        RequestManager.request(url: url, method: .get, headers: nil, body: nil) { response, error in
-            if let _ = error {
-                completion(nil)
-                
-            } else if let validResponse = response {
-                
-                // Checks the data of the response
-                if let championsJson = validResponse["data"] as? [String : Any] {
-                    
-                    // Returns the parsed Champion list from the dictionary
-                    completion(ResponseParser.parseChampionList(from: championsJson))
-                    
-                } else {
-                    completion(nil)
-                }
+        PatchServices.getPatch(patch: { latestPatch in
+            
+            // Guarantees the URL
+            guard let url = URL(string: BaseURL.championList.replacingOccurrences(of: "{{patch}}", with: latestPatch)) else {
+                failure(Errors.urlParseError)
+                return
             }
+            
+            // Performs the request
+            RequestManager.request(url: url, method: .get, headers: nil, body: nil, success: { response in
+                
+                do {
+                    // Gets a Dictionary value of the data received from the server
+                    let json = try JSONSerialization.jsonObject(with: response, options: []) as! [String : Any]
+                    
+                    // Checks the data of the response
+                    if let championsJson = json["data"] as? [String : Any] {
+                        // Returns the parsed Item list from the dictionary
+                        champions(ResponseParser.parseChampionList(from: championsJson))
+                    } else {
+                        failure(Errors.dictionaryParseError)
+                    }
+                } catch let error {
+                    failure(error)
+                }
+            }) { error in
+                failure(error)
+            }
+            
+        }) { error in
+            failure(error)
         }
     }
     
@@ -47,44 +55,53 @@ class ChampionServices {
     /// - Parameters:
     ///   - stringId: String identification of the Champion
     ///   - completion: Returns the details of Champions, if existing
-    static func getChampionDetail(by stringId: String, completion: @escaping (ChampionDetail?) -> Void) {
+    static func getChampionDetail(by stringId: String, championDetail: @escaping (ChampionDetail) -> Void, failure: @escaping (Error) -> Void) {
         
-        // Setup the string of URL
-        let baseURL = BaseURL.championDetail.replacingOccurrences(of: "{{stringId}}", with: stringId)
-        
-        // Guarantees the URL
-        guard let url = URL(string: baseURL) else {
-            completion(nil)
-            return
-        }
-        
-        // Perform the request
-        RequestManager.request(url: url, method: .get, headers: nil, body: nil) { response, error in
-            if let _ = error {
-                completion(nil)
+        PatchServices.getPatch(patch: { latestPatch in
+            
+            // Setup the string of URL
+            let baseURL = BaseURL.championDetail.replacingOccurrences(of: "{{stringId}}", with: stringId).replacingOccurrences(of: "{{patch}}", with: latestPatch)
+            
+            // Guarantees the URL
+            guard let url = URL(string: baseURL) else {
+                failure(Errors.urlParseError)
+                return
+            }
+            
+            // Perform the request
+            RequestManager.request(url: url, method: .get, headers: nil, body: nil, success: { response in
                 
-            } else if let validResponse = response {
-                
-                // Checks the data of the response
-                if let data = validResponse["data"] as? [String : Any] {
+                do {
+                    // Gets a Dictionary value of the data received from the server
+                    let json = try JSONSerialization.jsonObject(with: response, options: []) as! [String : Any]
                     
-                    if let championKey = data.keys.first {
+                    // Checks the data of the response
+                    if let championJson = json["data"] as? [String : Any] {
                         
-                        // Gets the first structure of the data of the Champion
-                        if let championJson = data[championKey] as? [String : Any] {
+                        if let championKey = championJson.keys.first {
                             
-                            // Returns the parsed Champion Detail from the dictionary
-                            completion(ResponseParser.parseChampionDetail(from: championJson))
+                            // Gets the first structure of the data of the Champion
+                            if let championJson = championJson[championKey] as? [String : Any] {
+                                
+                                // Returns the parsed Champion Detail from the dictionary
+                                championDetail(ResponseParser.parseChampionDetail(from: championJson))
+                            } else {
+                                failure(Errors.dictionaryParseError)
+                            }
                         } else {
-                            completion(nil)
+                            failure(Errors.noValues)
                         }
                     } else {
-                        completion(nil)
-                    }    
-                } else {
-                    completion(nil)
+                        failure(Errors.dictionaryParseError)
+                    }
+                } catch let error {
+                    failure(error)
                 }
+            }) { error in
+                failure(error)
             }
+        }) { error in
+            failure(error)
         }
     }
 }

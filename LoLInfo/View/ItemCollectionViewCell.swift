@@ -21,7 +21,10 @@ class ItemCollectionViewCell: UICollectionViewCell {
     ///
     /// - Parameter item: Item to get the information from
     func setup(item: Item) {
-        if let validURL = URL(string: item.thumbURL) {
+        
+        let patch = PatchServices.getPatchFromUserDefaults()!
+        
+        if let validURL = URL(string: item.thumbURL.replacingOccurrences(of: "{{patch}}", with: patch)) {
             loadImage(with: validURL, options: NukeOptions.itemLoading, into: self.itemThumb)
         }
 

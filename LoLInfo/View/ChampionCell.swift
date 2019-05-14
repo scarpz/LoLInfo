@@ -29,7 +29,9 @@ class ChampionCell: UICollectionViewCell {
     /// - Parameter champion: Champion to get the information from
     func setup(champion: Champion) {
         
-        if let thumbURL = URL(string: champion.thumbURL) {
+        let patch = PatchServices.getPatchFromUserDefaults()!
+        
+        if let thumbURL = URL(string: champion.thumbURL.replacingOccurrences(of: "{{patch}}", with: patch)) {
             loadImage(with: thumbURL, options: NukeOptions.championLoading, into: self.championThumb)
         }
         self.championName.text = champion.name

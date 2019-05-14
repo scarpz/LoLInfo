@@ -39,7 +39,9 @@ extension ItemDetailViewController {
     /// Method responsible to display all the information of the Item
     private func displayItemInfo() {
         
-        if let validURL = URL(string: self.item.thumbURL) {
+        let patch = PatchServices.getPatchFromUserDefaults()!
+        
+        if let validURL = URL(string: self.item.thumbURL.replacingOccurrences(of: "{{patch}}", with: patch)) {
             loadImage(with: validURL, options: NukeOptions.itemLoading, into: self.itemThumb)
         }
         

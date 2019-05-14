@@ -1,14 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AwG-mq-etw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5Qh-7A-4sz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Initial View Controller-->
+        <scene sceneID="pne-Nn-9r7">
+            <objects>
+                <viewController id="5Qh-7A-4sz" customClass="InitialViewController" customModule="LoLInfo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z7i-yb-tof">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="yfk-BA-Edc">
+                                <rect key="frame" x="75" y="205" width="225" height="257"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="yfk-BA-Edc" secondAttribute="height" multiplier="786:898" id="pEo-s0-PL6"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.058823529409999999" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="yfk-BA-Edc" firstAttribute="centerY" secondItem="z7i-yb-tof" secondAttribute="centerY" id="F40-vx-ioO"/>
+                            <constraint firstItem="yfk-BA-Edc" firstAttribute="centerX" secondItem="z7i-yb-tof" secondAttribute="centerX" id="PSQ-hT-mgm"/>
+                            <constraint firstItem="yfk-BA-Edc" firstAttribute="width" secondItem="z7i-yb-tof" secondAttribute="width" multiplier="0.6" id="rXp-Ir-s1y"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Pf6-bH-bPH"/>
+                    </view>
+                    <connections>
+                        <segue destination="AwG-mq-etw" kind="presentation" identifier="InitialSegue" modalPresentationStyle="currentContext" modalTransitionStyle="crossDissolve" id="fwj-kV-hiR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="edi-pq-d3K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="932" y="-640"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5Cc-Me-LHv">
             <objects>
@@ -21,7 +53,6 @@
                     <connections>
                         <segue destination="Fo4-Z2-q0q" kind="relationship" relationship="viewControllers" id="Czo-oY-AVB"/>
                         <segue destination="nbP-jn-23c" kind="relationship" relationship="viewControllers" id="GuT-Gk-n9N"/>
-                        <segue destination="XQt-oF-M97" kind="relationship" relationship="viewControllers" id="fLD-1O-IN1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zw5-Uk-Lfc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -117,8 +148,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="championsIcon" width="50" height="50"/>
-        <image name="itemIcon" width="50" height="50"/>
-        <image name="itemSetIcon" width="50" height="50"/>
+        <image name="championsIcon" width="25" height="25"/>
+        <image name="itemIcon" width="25" height="25"/>
+        <image name="itemSetIcon" width="25" height="25"/>
+        <image name="logo" width="787" height="899"/>
     </resources>
 </document>

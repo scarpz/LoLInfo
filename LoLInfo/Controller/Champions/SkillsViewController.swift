@@ -44,7 +44,9 @@ extension SkillsViewController {
     /// the Skills and the Passive received from the last View Controller
     private func displaySkills() {
         
-        if let passiveURL = URL(string: self.passive.thumbURL) {
+        let patch = PatchServices.getPatchFromUserDefaults()!
+        
+        if let passiveURL = URL(string: self.passive.thumbURL.replacingOccurrences(of: "{{patch}}", with: patch)) {
             loadImage(with: passiveURL, options: NukeOptions.skillLoading, into: self.passiveImage)
         }
         self.passiveName.text = self.passive.name
@@ -52,7 +54,7 @@ extension SkillsViewController {
         
         for index in 0..<self.skills.count {
             
-            if let skillURL = URL(string: self.skills[index].thumbURL) {
+            if let skillURL = URL(string: self.skills[index].thumbURL.replacingOccurrences(of: "{{patch}}", with: patch)) {
                 loadImage(with: skillURL, options: NukeOptions.skillLoading, into: self.skillsImage[index])
             }
             self.skillsName[index].text = self.skills[index].name

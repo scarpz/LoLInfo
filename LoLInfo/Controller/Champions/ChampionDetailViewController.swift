@@ -49,7 +49,7 @@ class ChampionDetailViewController: UITableViewController {
     
     // MARK: - Properties
     var champion: Champion!
-    
+    let patch = PatchServices.getPatchFromUserDefaults()!
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -99,15 +99,15 @@ extension ChampionDetailViewController {
     /// Method responsible to get all the details about the selected Champion
     private func loadChampionDetail() {
         
-        ChampionServices.getChampionDetail(by: self.champion.stringId) { [unowned self] championDetail in
-            if let validDetails = championDetail {
-                self.champion.championDetail = validDetails
-                
-                DispatchQueue.main.async {
-                    self.displayChampionDetails()
-                    self.collectionView.reloadData()
-                }
+        ChampionServices.getChampionDetail(by: self.champion.stringId, championDetail: { [unowned self] championDetail in
+            self.champion.championDetail = championDetail
+            
+            DispatchQueue.main.async {
+                self.displayChampionDetails()
+                self.collectionView.reloadData()
             }
+        }) { [unowned self] error in
+            self.createAlert(title: "Error", message: error.localizedDescription)
         }
     }
     
@@ -115,7 +115,7 @@ extension ChampionDetailViewController {
     private func displayChampionDetails() {
         
         // Guarantees the image URL
-        guard let thumbURL = URL(string: self.champion.thumbURL) else {
+        guard let thumbURL = URL(string: self.champion.thumbURL.replacingOccurrences(of: "{{patch}}", with: self.patch)) else {
             return
         }
         
@@ -190,11 +190,11 @@ extension ChampionDetailViewController {
     private func displaySkills(passive: Skill, skills: [Skill]) {
         
         // Guarantees all the string URLs
-        if let passiveURL = URL(string: passive.thumbURL),
-            let qURL = URL(string: skills[0].thumbURL),
-            let wURL = URL(string: skills[1].thumbURL),
-            let eURL = URL(string: skills[2].thumbURL),
-            let rURL = URL(string: skills[3].thumbURL) {
+        if let passiveURL = URL(string: passive.thumbURL.replacingOccurrences(of: "{{patch}}", with: self.patch)),
+            let qURL = URL(string: skills[0].thumbURL.replacingOccurrences(of: "{{patch}}", with: self.patch)),
+            let wURL = URL(string: skills[1].thumbURL.replacingOccurrences(of: "{{patch}}", with: self.patch)),
+            let eURL = URL(string: skills[2].thumbURL.replacingOccurrences(of: "{{patch}}", with: self.patch)),
+            let rURL = URL(string: skills[3].thumbURL.replacingOccurrences(of: "{{patch}}", with: self.patch)) {
             
             // Fill the skill images (Nuke)
             loadImage(with: passiveURL, options: NukeOptions.skillLoading, into: self.passiveSkill)

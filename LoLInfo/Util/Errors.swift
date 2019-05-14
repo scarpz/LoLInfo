@@ -9,5 +9,8 @@
 import Foundation
 
 enum Errors: Error {
+    case urlParseError
+    case dictionaryParseError
+    case noValues
     case coreDataFailure
 }

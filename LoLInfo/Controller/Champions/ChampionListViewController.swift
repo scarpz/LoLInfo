@@ -71,15 +71,15 @@ extension ChampionListViewController {
     /// Method responsible to load all the Champions, fill the data source and backup properties
     /// and reaload the Collection View with the retrieved values
     private func getAllChampions() {
-        ChampionServices.getAllChampions { [unowned self] champions in
-            if let validChampions = champions {
-                self.allChampions = validChampions
-                self.champions = validChampions
-                
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
+        ChampionServices.getAllChampions(champions: { [unowned self] champions in
+            self.allChampions = champions
+            self.champions = champions
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
             }
+        }) { [unowned self] error in
+            self.createAlert(title: "Error", message: error.localizedDescription)
         }
     }
 }

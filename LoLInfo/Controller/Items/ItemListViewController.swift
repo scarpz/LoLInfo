@@ -100,16 +100,17 @@ extension ItemListViewController {
     /// Method responsible to load all the Items, fill the data source and backup properties
     /// and reaload the Collection View / Table View with the retrieved values
     private func getAllItems() {
-        ItemServices.getAllItems { [unowned self] items in
-            if let validItems = items {
-                self.allItems = validItems
-                self.items = validItems
-                
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                    self.tableView.reloadData()
-                }
+        ItemServices.getAllItems(itens: { [unowned self] items in
+            
+            self.allItems = items
+            self.items = items
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.tableView.reloadData()
             }
+        }) { [unowned self] error in
+            self.createAlert(title: "Error", message: error.localizedDescription)
         }
     }
     

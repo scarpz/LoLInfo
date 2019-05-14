@@ -28,7 +28,10 @@ class ItemSelectionTableViewCell: UITableViewCell {
         /// Display the information of an Item in this cell
         ///
         /// - Parameter item: Item to get the information from
-        if let validURL = URL(string: item.thumbURL) {
+        
+        let patch = PatchServices.getPatchFromUserDefaults()!
+        
+        if let validURL = URL(string: item.thumbURL.replacingOccurrences(of: "{{patch}}", with: patch)) {
             loadImage(with: validURL, options: NukeOptions.itemLoading, into: self.itemThumb)
         }
         self.itemName.text = item.name

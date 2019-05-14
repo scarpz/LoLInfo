@@ -13,7 +13,7 @@ class ItemTableViewCell: UITableViewCell {
     
     
     // MARK: - Outlets
-    @IBOutlet weak var itemThumb: UIImageView!
+    @IBOutlet private weak var itemThumb: UIImageView!
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var itemDescription: UILabel!
     @IBOutlet weak var itemPrice: UILabel!
@@ -24,7 +24,10 @@ class ItemTableViewCell: UITableViewCell {
     ///
     /// - Parameter item: Item to get the information from
     func setup(item: Item) {
-        if let validURL = URL(string: item.thumbURL) {
+        
+        let patch = PatchServices.getPatchFromUserDefaults()!
+        
+        if let validURL = URL(string: item.thumbURL.replacingOccurrences(of: "{{patch}}", with: patch)) {
             loadImage(with: validURL, options: NukeOptions.itemLoading, into: self.itemThumb)
         }
         self.itemName.text = item.name

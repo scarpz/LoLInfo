@@ -28,7 +28,10 @@ class ChampionSelectionTableViewCell: UITableViewCell {
     ///
     /// - Parameter champion: Champion to get the information from
     func setup(champion: Champion) {
-        if let validURL = URL(string: champion.thumbURL) {
+        
+        let patch = PatchServices.getPatchFromUserDefaults()!
+        
+        if let validURL = URL(string: champion.thumbURL.replacingOccurrences(of: "{{patch}}", with: patch)) {
             loadImage(with: validURL, options: NukeOptions.championLoading, into: self.championThumb)
         }
         self.championName.text = champion.name

@@ -1,5 +1,5 @@
 //
-//  Patch.swift
+//  PatchServices.swift
 //  LoLInfo
 //
 //  Created by Scarpz on 21/11/18.
@@ -9,6 +9,6 @@
 import Foundation
 
 /// Struct responsible to store the current Patch of the game
-struct Patch {
-    static var patch = "8.24.1"
+struct PatchServices {
+    static var patch = "9.10.1"
 }
