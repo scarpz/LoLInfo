@@ -25,7 +25,7 @@ class PatchServices {
         }
     }
     
-    private static func getPatchFromServer(patch: @escaping (String) -> Void, failure: @escaping (Error) -> Void) {
+    static func getPatchFromServer(patch: @escaping (String) -> Void, failure: @escaping (Error) -> Void) {
         
         // Guarantees the URL
         guard let url = URL(string: BaseURL.patchList) else {

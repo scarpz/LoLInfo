@@ -17,7 +17,7 @@ class InitialViewController: UIViewController {
     }
     
     private func getPatch() {
-        PatchServices.getPatch(patch: { [unowned self] _ in
+        PatchServices.getPatchFromServer(patch: { [unowned self] _ in
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "InitialSegue", sender: nil)
             }
