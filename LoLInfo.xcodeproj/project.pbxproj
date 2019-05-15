@@ -13,6 +13,8 @@
 		180F8E0821A834CA0047C8F0 /* ChampionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180F8E0721A834CA0047C8F0 /* ChampionDetailViewController.swift */; };
 		180F8E0A21A85DAE0047C8F0 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180F8E0921A85DAE0047C8F0 /* ItemTableViewCell.swift */; };
 		181872E921AF4E3600BD2AFA /* NewItemSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181872E821AF4E3600BD2AFA /* NewItemSetViewController.swift */; };
+		18215692228CABE800127495 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18215691228CABE800127495 /* Settings.storyboard */; };
+		18215695228CAE8E00127495 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18215694228CAE8E00127495 /* SettingsViewController.swift */; };
 		1837A78221A71A7B001F8ADA /* ChampionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1837A78121A71A7B001F8ADA /* ChampionDetail.swift */; };
 		1837A78421A71BD8001F8ADA /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1837A78321A71BD8001F8ADA /* Skin.swift */; };
 		1837A78621A71D4C001F8ADA /* ChampionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1837A78521A71D4C001F8ADA /* ChampionInfo.swift */; };
@@ -70,6 +72,8 @@
 		180F8E0721A834CA0047C8F0 /* ChampionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChampionDetailViewController.swift; sourceTree = "<group>"; };
 		180F8E0921A85DAE0047C8F0 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		181872E821AF4E3600BD2AFA /* NewItemSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemSetViewController.swift; sourceTree = "<group>"; };
+		18215691228CABE800127495 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		18215694228CAE8E00127495 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1837A78121A71A7B001F8ADA /* ChampionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionDetail.swift; sourceTree = "<group>"; };
 		1837A78321A71BD8001F8ADA /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
 		1837A78521A71D4C001F8ADA /* ChampionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionInfo.swift; sourceTree = "<group>"; };
@@ -104,7 +108,7 @@
 		189CC98E21B9FB9500EB6F49 /* SkillType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillType.swift; sourceTree = "<group>"; };
 		18A31E3721B020AE0085A32E /* SelectChampionItemSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChampionItemSetViewController.swift; sourceTree = "<group>"; };
 		18A31E3921B023960085A32E /* ChampionSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionSelectionTableViewCell.swift; sourceTree = "<group>"; };
-		18B57560228B4F00006CD2AF /* PatchServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PatchServices.swift; path = LoLInfo/Util/PatchServices.swift; sourceTree = SOURCE_ROOT; };
+		18B57560228B4F00006CD2AF /* PatchServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PatchServices.swift; path = LoLInfo/Services/PatchServices.swift; sourceTree = SOURCE_ROOT; };
 		18BBCC9A228B6082007BDD7D /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		18BBCC9D228B6FE2007BDD7D /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		18BBCC9E228B6FE3007BDD7D /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -153,6 +157,14 @@
 			path = Items;
 			sourceTree = "<group>";
 		};
+		18215693228CAE1E00127495 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				18215694228CAE8E00127495 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		1837A77E21A7197F001F8ADA /* Champions */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,19 +208,19 @@
 		1885063821A5BB3C00D77E0E /* LoLInfo */ = {
 			isa = PBXGroup;
 			children = (
-				1885065221A5BB7900D77E0E /* Mechanism */,
-				1885065121A5BB6A00D77E0E /* Service */,
-				1885065B21A5BF8E00D77E0E /* Util */,
-				1885064E21A5BB5B00D77E0E /* Model */,
-				1885065021A5BB6500D77E0E /* Controller */,
-				1885064F21A5BB6000D77E0E /* View */,
+				1885065221A5BB7900D77E0E /* Mechanisms */,
+				1885065121A5BB6A00D77E0E /* Services */,
+				1885065B21A5BF8E00D77E0E /* Utils */,
+				1885064E21A5BB5B00D77E0E /* Models */,
+				1885065021A5BB6500D77E0E /* Controllers */,
+				1885064F21A5BB6000D77E0E /* Views */,
 				1885065421A5BB8600D77E0E /* Resources */,
 				1885065321A5BB7E00D77E0E /* Support */,
 			);
 			path = LoLInfo;
 			sourceTree = "<group>";
 		};
-		1885064E21A5BB5B00D77E0E /* Model */ = {
+		1885064E21A5BB5B00D77E0E /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				1885065921A5BDCB00D77E0E /* Champion.swift */,
@@ -222,10 +234,10 @@
 				184CCBD421AF19E400BA27B0 /* ItemSet.swift */,
 				18FF17B121B83A41005546F5 /* ItemSetCoreData.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		1885064F21A5BB6000D77E0E /* View */ = {
+		1885064F21A5BB6000D77E0E /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				18BBCC9C228B6FCB007BDD7D /* LoadingView */,
@@ -234,6 +246,7 @@
 				1885065521A5BCE500D77E0E /* Champion.storyboard */,
 				1885065721A5BD1E00D77E0E /* Item.storyboard */,
 				18476BBC21AF172E00AEB06F /* ItemSet.storyboard */,
+				18215691228CABE800127495 /* Settings.storyboard */,
 				1885066821A5C98700D77E0E /* ChampionCell.swift */,
 				180F8E0921A85DAE0047C8F0 /* ItemTableViewCell.swift */,
 				18D5C15721A8AEDB00DEBC51 /* ItemCollectionViewCell.swift */,
@@ -243,21 +256,22 @@
 				18CB10EB21B0E18300DB41EC /* ItemSetCollectionViewCell.swift */,
 				18CB10EF21B0F35900DB41EC /* ItemSelectionCollectionViewCell.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		1885065021A5BB6500D77E0E /* Controller */ = {
+		1885065021A5BB6500D77E0E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				18BBCC99228B6070007BDD7D /* Initial */,
 				1837A77E21A7197F001F8ADA /* Champions */,
 				180F8E0021A8223B0047C8F0 /* Items */,
 				18476BBB21AF147C00AEB06F /* ItemSets */,
+				18215693228CAE1E00127495 /* Settings */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
-		1885065121A5BB6A00D77E0E /* Service */ = {
+		1885065121A5BB6A00D77E0E /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				1885065E21A5C26500D77E0E /* ChampionServices.swift */,
@@ -265,17 +279,17 @@
 				18639BA121B2D35D0043F8CE /* ItemSetServices.swift */,
 				18B57560228B4F00006CD2AF /* PatchServices.swift */,
 			);
-			path = Service;
+			path = Services;
 			sourceTree = "<group>";
 		};
-		1885065221A5BB7900D77E0E /* Mechanism */ = {
+		1885065221A5BB7900D77E0E /* Mechanisms */ = {
 			isa = PBXGroup;
 			children = (
 				1885064021A5BB3C00D77E0E /* LoLInfo.xcdatamodeld */,
 				1885066021A5C2D900D77E0E /* RequestManager.swift */,
 				18D56F8321B327D100C690FA /* CoreDataManager.swift */,
 			);
-			path = Mechanism;
+			path = Mechanisms;
 			sourceTree = "<group>";
 		};
 		1885065321A5BB7E00D77E0E /* Support */ = {
@@ -295,7 +309,7 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		1885065B21A5BF8E00D77E0E /* Util */ = {
+		1885065B21A5BF8E00D77E0E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				1885066221A5C32B00D77E0E /* RequestMethod.swift */,
@@ -307,7 +321,7 @@
 				18FF17B321B83D9A005546F5 /* Errors.swift */,
 				18FF17B521B83E20005546F5 /* ViewControllerExtension.swift */,
 			);
-			path = Util;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		18BBCC99228B6070007BDD7D /* Initial */ = {
@@ -399,6 +413,7 @@
 				1885064721A5BB3D00D77E0E /* LaunchScreen.storyboard in Resources */,
 				1885065621A5BCE500D77E0E /* Champion.storyboard in Resources */,
 				1885064421A5BB3D00D77E0E /* Assets.xcassets in Resources */,
+				18215692228CABE800127495 /* Settings.storyboard in Resources */,
 				1885065821A5BD1E00D77E0E /* Item.storyboard in Resources */,
 				18BBCC9F228B6FE3007BDD7D /* LoadingView.xib in Resources */,
 				1885063F21A5BB3C00D77E0E /* Main.storyboard in Resources */,
@@ -478,6 +493,7 @@
 				18A31E3821B020AE0085A32E /* SelectChampionItemSetViewController.swift in Sources */,
 				18EAE30421ACFB1B00CA696F /* SkillsViewController.swift in Sources */,
 				1885066721A5C72100D77E0E /* ChampionListViewController.swift in Sources */,
+				18215695228CAE8E00127495 /* SettingsViewController.swift in Sources */,
 				184CCBD921AF1BD300BA27B0 /* ItemSetTableViewCell.swift in Sources */,
 				1837A78621A71D4C001F8ADA /* ChampionInfo.swift in Sources */,
 				18639BA221B2D35D0043F8CE /* ItemSetServices.swift in Sources */,

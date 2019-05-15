@@ -34,7 +34,7 @@ class RequestManager {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
             if let data = data {
-                print("✅✅✅✅✅\n\n\(response)\n\n✅✅✅✅✅")
+                print("\n\n✅✅✅✅✅\n\n\(response)\n\n✅✅✅✅✅")
                 success(data)
             }
             if let error = error {
